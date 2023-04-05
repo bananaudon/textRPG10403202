@@ -16,31 +16,32 @@ public class eventList{
         }
         return new event();
     }
+    
     public void executeEvent(event executeEvent){
-        String EventMessage = "異常なメッセージ";
-        switch(executeEvent.eventType){
-            case 0:
+
+        String EventMessage = switch(executeEvent.eventType){
+
+            case 0 ->{
                 int RandomNum = (int)(Math.random() * 3);
-                switch(RandomNum){
-                    case 0:
-                        EventMessage = "何か物音がした気がする......";
-                    break;
-                    case 1:
-                        EventMessage = "不気味なほど静かだ......";
-                    break;
-                    case 2:
-                        EventMessage = "太陽が恋しい......";
-                    break;
-                }
-            break;
-            case 1:
-                EventMessage = "";
+
+                yield switch(RandomNum){
+                    case 0 -> "何か物音がした気がする......";
+                    case 1 -> "不気味なほど静かだ......";
+                    case 2 -> "太陽が恋しい......";
+                    default -> "異常なメッセージ";
+                };
+            }
+            case 1 ->{
                 RPG2.battle(executeEvent.eventPower);
-                return;
-            case 2:
-                EventMessage = "みじっそう";
-            break;
-        }
+                yield "";
+            }
+            case 2 ->{
+                yield "みじっそう";
+            }
+            default -> {
+                yield "異常なメッセージ";
+            }
+        };
         RPG2.logWrite(EventMessage);
     }
 }
