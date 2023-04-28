@@ -19,12 +19,9 @@ public class RPG2 extends JFrame implements ActionListener {
 
 	static String EnemyName = "";
 	static boolean fight = false;
-	static boolean trun = false;
+	static boolean turn = false;
 	static int pos = 1;
 	static int risk = 100;
-	JButton next = new JButton("前に進む");
-	static JButton heal = new JButton("回復:" + iBJ.BAG.healItem.remaining);
-	JButton GiveUp = new JButton("あきらめる");
 	static JTextField Lvtxt = new JTextField("Lv." + mainStatus.Lv + "(" + mainStatus.nextLv + ")");
 	static JTextField HPtxt = new JTextField("HP" + mainStatus.maxHP + "/" + mainStatus.nowHP);
 	static JTextField Powtxt = new JTextField("Power" + mainStatus.Pow);
@@ -32,9 +29,14 @@ public class RPG2 extends JFrame implements ActionListener {
 	JScrollPane scroll = new JScrollPane(log,
 			JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 			JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+	
+	JButton next = new JButton("前に進む");
+	static JButton heal = new JButton("回復:" + iBJ.BAG.healItem.remaining);
+	JButton GiveUp = new JButton("あきらめる");
 	JButton Attack = new JButton("攻撃");
 	JButton charge = new JButton("ためる");
 	JButton itemBag = new JButton("アイテム");
+
 	static int[] EnemyStatus = Enemy(0);
 
 	RPG2(String title) {
