@@ -3,28 +3,26 @@ import java.awt.*;
 import javax.swing.*;
 
 public class RPG2 extends JFrame implements ActionListener {
-	static playableStatus mainStatus = new playableStatus();
+	static character_main mainCharacter = new character_main();
 	// static itemBag itembag = new itemBag();
-	static equipment equipments = new equipment();
 	static itemBagJFrame iBJ = new itemBagJFrame();
 	static eventList Event = new eventList();
 
 	public static void main(String args[]) {
-		mainStatus.statusSet(1, 100, 100, 5);
-		mainStatus.PStatusSet(100, 0, 1, 0);
+		mainCharacter.statusSet(1, 100, 100, 5);
+		mainCharacter.PStatusSet(100, 0, 1, 0);
 		refresh();
 		Event.executeEvent(Event.selectEvent(30));
 		new RPG2("RPG");
 	}
-
 	static String EnemyName = "";
 	static boolean fight = false;
 	static boolean turn = false;
 	static int pos = 1;
 	static int risk = 100;
-	static JTextField Lvtxt = new JTextField("Lv." + mainStatus.Lv + "(" + mainStatus.nextLv + ")");
-	static JTextField HPtxt = new JTextField("HP" + mainStatus.maxHP + "/" + mainStatus.nowHP);
-	static JTextField Powtxt = new JTextField("Power" + mainStatus.Pow);
+	static JTextField Lvtxt = new JTextField("Lv." + mainCharacter.Lv + "(" + mainCharacter.nextLv + ")");
+	static JTextField HPtxt = new JTextField("HP" + mainCharacter.maxHP + "/" + mainCharacter.nowHP);
+	static JTextField Powtxt = new JTextField("Power" + mainCharacter.Pow);
 	public static JTextArea log = new JTextArea(5, 20);
 	JScrollPane scroll = new JScrollPane(log,
 			JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
@@ -36,9 +34,7 @@ public class RPG2 extends JFrame implements ActionListener {
 	JButton Attack = new JButton("攻撃");
 	JButton charge = new JButton("ためる");
 	JButton itemBag = new JButton("アイテム");
-
 	static int[] EnemyStatus = Enemy(0);
-
 	RPG2(String title) {
 		setTitle(title);
 		log.setLineWrap(true);
@@ -88,13 +84,14 @@ public class RPG2 extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == next) {
 			walk(1);
-		} else if (e.getSource() == heal) {
+		}
+		else if (e.getSource() == heal) {
 			if (iBJ.BAG.healItem.remaining > 0) {
 				iBJ.BAG.healItem.remaining--;
 				log.append("ポーションを使って回復した、残りは" + iBJ.BAG.healItem.remaining + "\n");
-				mainStatus.nowHP += (mainStatus.maxHP - mainStatus.nowHP) / 2 + 10;
-				if (mainStatus.nowHP > mainStatus.maxHP) {
-					mainStatus.nowHP = mainStatus.maxHP;
+				mainCharacter.nowHP += (mainCharacter.maxHP - mainCharacter.nowHP) / 2 + 10;
+				if (mainCharacter.nowHP > mainCharacter.maxHP) {
+					mainCharacter.nowHP = mainCharacter.maxHP;
 				}
 			} else {
 				log.append("ポーションはもうない\n");
@@ -102,13 +99,14 @@ public class RPG2 extends JFrame implements ActionListener {
 			if (fight) {
 				Damage(0);
 			}
-		} else if (e.getSource() == Attack) {
+		}
+		else if (e.getSource() == Attack) {
 			if (fight) {
-				EnemyStatus[2] -= mainStatus.Pow;
-				log.append(EnemyName + "に" + mainStatus.Pow + "のダメージ\n");
+				EnemyStatus[2] -= mainCharacter.Pow;
+				log.append(EnemyName + "に" + mainCharacter.Pow + "のダメージ\n");
 				if (EnemyStatus[2] <= 0) {
 					log.append(EnemyName + "を倒した\n");
-					mainStatus.nextLv -= EnemyStatus[0] * 5;
+					mainCharacter.nextLv -= EnemyStatus[0] * 5;
 					fight = false;
 				} else {
 					Damage(0);
@@ -116,8 +114,9 @@ public class RPG2 extends JFrame implements ActionListener {
 			} else {
 				log.append("攻撃はむなしく空ぶった\n");
 			}
-		} else if (e.getSource() == itemBag) {
-			iBJ.openItemBag();
+		}
+		else if (e.getSource() == itemBag) {
+			iBJ.openItemBag(mainCharacter);
 		}
 		refresh();
 	}
@@ -164,37 +163,37 @@ public class RPG2 extends JFrame implements ActionListener {
 	public static void Damage(int damagetype) {
 		switch (damagetype) {
 			case 0:
-				mainStatus.nowHP -= EnemyStatus[3];
+				mainCharacter.nowHP -= EnemyStatus[3];
 				log.append(EnemyName + "から" + EnemyStatus[3] + "のダメージ\n");
 				refresh();
 				break;
 		}
-		if (mainStatus.nowHP <= 0) {
+		if (mainCharacter.nowHP <= 0) {
 			log.append("死んだ\n");
 			System.exit(1);
 		}
 	}
 
 	static void fixedHeal(int healSize) {
-		mainStatus.nowHP += healSize;
+		mainCharacter.nowHP += healSize;
 		refresh();
-		System.out.println("test" + mainStatus.nowHP);
+		System.out.println("test" + mainCharacter.nowHP);
 	}
 
 	static void percentageHeal(int percentage) {
-		mainStatus.nowHP += (int) (mainStatus.maxHP * ((double) (percentage) / 100));
+		mainCharacter.nowHP += (int) (mainCharacter.maxHP * ((double) (percentage) / 100));
 		refresh();
-		System.out.println("test" + mainStatus.nowHP);
+		System.out.println("test" + mainCharacter.nowHP);
 	}
 
 	public static void refresh() {
-		if (mainStatus.nowHP > mainStatus.maxHP) {
-			mainStatus.nowHP = mainStatus.maxHP;
+		if (mainCharacter.nowHP > mainCharacter.maxHP) {
+			mainCharacter.nowHP = mainCharacter.maxHP;
 		}
-		Powtxt.setText("Power" + mainStatus.Pow);
+		Powtxt.setText("Power" + mainCharacter.Pow);
 		heal.setText("回復:" + iBJ.BAG.healItem.remaining);
-		HPtxt.setText("HP" + mainStatus.nowHP + "/" + mainStatus.maxHP);
-		Lvtxt.setText("Lv." + mainStatus.Lv + "(" + mainStatus.nextLv + ")");
+		HPtxt.setText("HP" + mainCharacter.nowHP + "/" + mainCharacter.maxHP);
+		Lvtxt.setText("Lv." + mainCharacter.Lv + "(" + mainCharacter.nextLv + ")");
 	}
 
 	static void logWrite(String MAIN) {

@@ -16,7 +16,6 @@ public class eventList{
         }
         return new event();
     }
-    
     public void executeEvent(event executeEvent){
 
         String EventMessage = switch(executeEvent.eventType){

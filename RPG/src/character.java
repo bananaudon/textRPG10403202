@@ -1,4 +1,5 @@
-public class status{
+public abstract class character{
+    String name;
     int Lv,maxHP,nowHP,Pow;
     public void statusSet(int L,int MH,int NH,int P){
         Lv = L;
@@ -12,4 +13,7 @@ public class status{
         nowHP = (int)(Math.random()*(NHRange+1))+minNowHP;
         Pow = (int)(Math.random()*(PRange+1))+minPow;
     }
+    abstract void attack(character c);
+    abstract void damage(int damage);
+    abstract void heal(int heal);
 }

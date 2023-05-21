@@ -2,8 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 public class itemBagJFrame extends JFrame implements ActionListener{
+	character mC;
     public itemBag BAG = new itemBag();
-    public itemList itemlist = new itemList();
 	JTextField[] itemtxt = new JTextField[BAG.bags.length];
 	JButton selectedUp = new JButton("↑");
 	JButton selectedDown = new JButton("↓");
@@ -11,10 +11,10 @@ public class itemBagJFrame extends JFrame implements ActionListener{
 	int selectedBagNumber = 0;
     itemBagJFrame(){
         BAG.setEmpty();
-        BAG.setItem(0,itemList.findAllItem(1,0));
+        BAG.setItem(0,new item_Heal_LowPotion(40));
 		BAG.setHealItem(0);
-		BAG.addItem(itemList.findAllItem(2,0));
-		BAG.addItem(itemList.findAllItem(3,0));
+		BAG.addItem(new item_Heal_LowPotion(40));
+		BAG.addItem(new item_Heal_LowPotion(40));
         JPanel bwjpC = new JPanel();
         JPanel bwjpE = new JPanel();
 		getContentPane().add(bwjpC,BorderLayout.CENTER);
@@ -40,10 +40,12 @@ public class itemBagJFrame extends JFrame implements ActionListener{
 		if(e.getSource() == selectedUp){
 			selectedBagNumber--;
 			System.out.println(selectedBagNumber);
-		}else if(e.getSource() == selectedDown){
+		}
+		else if(e.getSource() == selectedDown){
 			selectedBagNumber++;
-		}else if(e.getSource() == useItem){
-				itemEfect.executionItem(BAG.bags[selectedBagNumber]);
+		}
+		else if(e.getSource() == useItem){
+			BAG.bags[selectedBagNumber].executionItem(mC);
 			if(BAG.bags[selectedBagNumber].remaining == 0){
 				BAG.breakItem(selectedBagNumber);
 			}
@@ -63,7 +65,8 @@ public class itemBagJFrame extends JFrame implements ActionListener{
 		itemtxt[selectedBagNumber].setBackground(new Color(128,128,255));
 		itemtxt[selectedBagNumber].setText(BAG.bags[selectedBagNumber].itemName);
 	}
-	public void openItemBag(){
+	public void openItemBag(character c){
+		this.mC = c;
 		setVisible(true);
 	}
 }
