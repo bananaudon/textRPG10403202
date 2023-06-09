@@ -3,14 +3,15 @@ import java.awt.*;
 import javax.swing.*;
 
 public class RPG2 extends JFrame implements ActionListener {
-	static character_main mainCharacter = new character_main();
+
+	//mainCharacterがHeroじゃなくなるようなことがあればfinalを外す
+	static final Hero mainCharacter = new Hero(1,100,100,5,100,0,1,0);
+
 	// static itemBag itembag = new itemBag();
 	static itemBagJFrame iBJ = new itemBagJFrame();
 	static eventList Event = new eventList();
 
 	public static void main(String args[]) {
-		mainCharacter.statusSet(1, 100, 100, 5);
-		mainCharacter.PStatusSet(100, 0, 1, 0);
 		refresh();
 		Event.executeEvent(Event.selectEvent(30));
 		new RPG2("RPG");
@@ -21,7 +22,7 @@ public class RPG2 extends JFrame implements ActionListener {
 	static boolean turn = false;
 	static int pos = 1;
 	static int risk = 100;
-	static JTextField Lvtxt = new JTextField("Lv." + mainCharacter.Lv + "(" + mainCharacter.nextLv + ")");
+	static JTextField Lvtxt = new JTextField("Lv." + mainCharacter.lv + "(" + mainCharacter.nextLv + ")");
 	static JTextField HPtxt = new JTextField("HP" + mainCharacter.maxHP + "/" + mainCharacter.nowHP);
 	static JTextField Powtxt = new JTextField("Power" + mainCharacter.Pow);
 	public static JTextArea log = new JTextArea(5, 20);
@@ -97,7 +98,7 @@ public class RPG2 extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		
+
 		if (e.getSource() == next) {
 			walk(1);
 		} else if (e.getSource() == heal) {
@@ -206,7 +207,7 @@ public class RPG2 extends JFrame implements ActionListener {
 		Powtxt.setText("Power" + mainCharacter.Pow);
 		heal.setText("回復:" + iBJ.BAG.healItem.remaining);
 		HPtxt.setText("HP" + mainCharacter.nowHP + "/" + mainCharacter.maxHP);
-		Lvtxt.setText("Lv." + mainCharacter.Lv + "(" + mainCharacter.nextLv + ")");
+		Lvtxt.setText("Lv." + mainCharacter.lv + "(" + mainCharacter.nextLv + ")");
 	}
 
 	static void logWrite(String MAIN) {

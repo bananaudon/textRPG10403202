@@ -1,23 +1,28 @@
-public abstract class character {
-    String name;
-    int Lv, maxHP, nowHP, Pow;
+public abstract class Character {
+    public String name;
+    
+    //将来的にprotectedに書き換えたい
+    public int lv;
+    public int maxHP;
+    public int nowHP;
+    public int Pow;
 
-    public void statusSet(int L, int MH, int NH, int P) {
-        Lv = L;
-        maxHP = MH;
-        nowHP = NH;
-        Pow = P;
+    Character(int level, int maxHP, int currentHP, int power) {
+        this.lv = level;
+        this.maxHP = maxHP;
+        this.nowHP = currentHP;
+        this.Pow = power;
     }
 
     public void randomStatus(int minLv, int minMaxHP, int minNowHP, int minPow, int LRange, int MHRange, int NHRange,
             int PRange) {
-        Lv = (int) (Math.random() * (LRange + 1)) + minLv;
+        lv = (int) (Math.random() * (LRange + 1)) + minLv;
         maxHP = (int) (Math.random() * (MHRange + 1)) + minMaxHP;
         nowHP = (int) (Math.random() * (NHRange + 1)) + minNowHP;
         Pow = (int) (Math.random() * (PRange + 1)) + minPow;
     }
 
-    abstract void attack(character c);
+    abstract void attack(Character c);
 
     abstract void damage(int damage);
 
