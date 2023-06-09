@@ -1,0 +1,26 @@
+# バージョン管理*しない*ファイルの拡張子を網羅してます。
+# コンパイルの結果出力されたファイル
+*.class
+
+# ログファイル
+*.log
+
+# BlueJ ファイル
+# 別に使ってないがバージョン管理する意味もまたないので無視している。
+*.ctxt
+
+# Javaのためのモバイルツール (J2ME)
+.mtj.tmp/
+
+# パッケージファイル #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Java VMのクラッシュログ。詳しくはここ http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+replay_pid*

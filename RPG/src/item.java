@@ -3,14 +3,17 @@ public abstract class item {
     int itemType;
     String itemName;
     int remaining;
-    void setItemStatus(int I,int IT,String N,int R){
+
+    void setItemStatus(int I, int IT, String N, int R) {
         itemID = I;
         itemType = IT;
         itemName = N;
         remaining = R;
     }
-    abstract void executionItem(character c);
-    item(){
+
+    abstract void executionItem(Character c);
+
+    item() {
         itemID = 0;
         itemType = 0;
         itemName = "NONE";
