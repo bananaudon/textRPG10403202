@@ -1,16 +1,18 @@
-# Compiled class file
+# バージョン管理*しない*ファイルの拡張子を網羅してます。
+# コンパイルの結果出力されたファイル
 *.class
 
-# Log file
+# ログファイル
 *.log
 
-# BlueJ files
+# BlueJ ファイル
+# 別に使ってないがバージョン管理する意味もまたないので無視している。
 *.ctxt
 
-# Mobile Tools for Java (J2ME)
+# Javaのためのモバイルツール (J2ME)
 .mtj.tmp/
 
-# Package Files #
+# パッケージファイル #
 *.jar
 *.war
 *.nar
@@ -19,6 +21,6 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# Java VMのクラッシュログ。詳しくはここ http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
