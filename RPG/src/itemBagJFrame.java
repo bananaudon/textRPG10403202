@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class itemBagJFrame extends JFrame implements ActionListener {
-	character mC;
+	Character mC;
 	public itemBag BAG = new itemBag();
 	JTextField[] itemtxt = new JTextField[BAG.bags.length];
 	JButton selectedUp = new JButton("↑");
@@ -80,7 +80,7 @@ public class itemBagJFrame extends JFrame implements ActionListener {
 		itemtxt[selectedBagNumber].setText(BAG.bags[selectedBagNumber].itemName);
 	}
 
-	public void openItemBag(character c) {
+	public void openItemBag(Character c) {
 		this.mC = c;
 		setVisible(true);
 	}

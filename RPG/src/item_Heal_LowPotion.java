@@ -5,7 +5,7 @@ public class item_Heal_LowPotion extends item_Heal {
         this.itemName = "低位ポーション";
     }
 
-    void executionItem(character c) {
+    void executionItem(Character c) {
         percentageHeal = (c.maxHP / 10);
         c.heal(fixedHeal + percentageHeal);
         RPG2.logWrite(itemName + "を使って" + (fixedHeal + percentageHeal) + "回復した");

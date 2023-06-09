@@ -11,7 +11,7 @@ public abstract class item {
         remaining = R;
     }
 
-    abstract void executionItem(character c);
+    abstract void executionItem(Character c);
 
     item() {
         itemID = 0;
