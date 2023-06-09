@@ -15,6 +15,7 @@ public class RPG2 extends JFrame implements ActionListener {
 		Event.executeEvent(Event.selectEvent(30));
 		new RPG2("RPG");
 	}
+
 	static String EnemyName = "";
 	static boolean fight = false;
 	static boolean turn = false;
@@ -27,7 +28,7 @@ public class RPG2 extends JFrame implements ActionListener {
 	JScrollPane scroll = new JScrollPane(log,
 			JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 			JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-	
+
 	JButton next = new JButton("前に進む");
 	static JButton heal = new JButton("回復:" + iBJ.BAG.healItem.remaining);
 	JButton GiveUp = new JButton("あきらめる");
@@ -35,34 +36,46 @@ public class RPG2 extends JFrame implements ActionListener {
 	JButton charge = new JButton("ためる");
 	JButton itemBag = new JButton("アイテム");
 	static int[] EnemyStatus = Enemy(0);
+
 	RPG2(String title) {
 		setTitle(title);
+
 		log.setLineWrap(true);
 		log.setEditable(false);
 		HPtxt.setEditable(false);
 		Lvtxt.setEditable(false);
 		Powtxt.setEditable(false);
+
 		JPanel jpN = new JPanel();
 		JPanel jpE = new JPanel();
 		JPanel jpS = new JPanel();
+
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(jpN, BorderLayout.NORTH);
 		getContentPane().add(jpS, BorderLayout.SOUTH);
 		getContentPane().add(jpE, BorderLayout.EAST);
+
 		jpN.add(next);
 		jpN.add(heal);
 		jpN.add(GiveUp);
+
 		getContentPane().add(scroll, BorderLayout.CENTER);
+
 		jpS.add(Lvtxt);
 		jpS.add(HPtxt);
 		jpS.add(Powtxt);
+
 		jpE.setLayout(new BoxLayout(jpE, BoxLayout.Y_AXIS));
+
 		jpE.add(Attack);
 		jpE.add(charge);
 		jpE.add(itemBag);
+
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+
 		setSize(450, 300);
 		setVisible(true);
+
 		next.addActionListener(this);
 		heal.addActionListener(this);
 		Attack.addActionListener(this);
@@ -70,6 +83,7 @@ public class RPG2 extends JFrame implements ActionListener {
 	}
 
 	public static void walk(int steps) {
+
 		if (fight) {
 			log.append("敵がいて前に進めそうにない\n");
 		} else {
@@ -78,14 +92,15 @@ public class RPG2 extends JFrame implements ActionListener {
 			Event.executeEvent(Event.selectEvent(risk));
 			// event();
 		}
+
 		risk += steps;
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		
 		if (e.getSource() == next) {
 			walk(1);
-		}
-		else if (e.getSource() == heal) {
+		} else if (e.getSource() == heal) {
 			if (iBJ.BAG.healItem.remaining > 0) {
 				iBJ.BAG.healItem.remaining--;
 				log.append("ポーションを使って回復した、残りは" + iBJ.BAG.healItem.remaining + "\n");
@@ -99,8 +114,7 @@ public class RPG2 extends JFrame implements ActionListener {
 			if (fight) {
 				Damage(0);
 			}
-		}
-		else if (e.getSource() == Attack) {
+		} else if (e.getSource() == Attack) {
 			if (fight) {
 				EnemyStatus[2] -= mainCharacter.Pow;
 				log.append(EnemyName + "に" + mainCharacter.Pow + "のダメージ\n");
@@ -114,8 +128,7 @@ public class RPG2 extends JFrame implements ActionListener {
 			} else {
 				log.append("攻撃はむなしく空ぶった\n");
 			}
-		}
-		else if (e.getSource() == itemBag) {
+		} else if (e.getSource() == itemBag) {
 			iBJ.openItemBag(mainCharacter);
 		}
 		refresh();
