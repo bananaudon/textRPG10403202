@@ -1,3 +1,4 @@
+package textRPG10403202;
 public class eventList {
     event[] events = new event[4];
 

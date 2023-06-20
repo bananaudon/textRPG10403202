@@ -1,7 +1,9 @@
+package textRPG10403202;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+import textRPG10403202.items.item_Heal_Low;
 public class itemBagJFrame extends JFrame implements ActionListener {
 	RPGCharacter mC;
 	public itemBag BAG = new itemBag();
@@ -28,7 +30,7 @@ public class itemBagJFrame extends JFrame implements ActionListener {
 		bwjpE.setLayout(new BoxLayout(bwjpE, BoxLayout.Y_AXIS));
 
 		for (int i = 0; i < BAG.bags.length; i++) {
-			itemtxt[i] = new JTextField(BAG.bags[i].itemName);
+			itemtxt[i] = new JTextField(BAG.bags[i].getItemName());
 			itemtxt[i].setEditable(false);
 			bwjpC.add(itemtxt[i]);
 		}
@@ -55,7 +57,7 @@ public class itemBagJFrame extends JFrame implements ActionListener {
 			selectedBagNumber++;
 		} else if (e.getSource() == useItem) {
 			BAG.bags[selectedBagNumber].executionItem(mC);
-			if (BAG.bags[selectedBagNumber].remaining == 0) {
+			if (BAG.bags[selectedBagNumber].getRemaining() == 0) {
 				BAG.breakItem(selectedBagNumber);
 			}
 		}
@@ -77,7 +79,7 @@ public class itemBagJFrame extends JFrame implements ActionListener {
 		}
 		
 		itemtxt[selectedBagNumber].setBackground(new Color(128, 128, 255));
-		itemtxt[selectedBagNumber].setText(BAG.bags[selectedBagNumber].itemName);
+		itemtxt[selectedBagNumber].setText(BAG.bags[selectedBagNumber].getItemName());
 	}
 
 	public void openItemBag(RPGCharacter c) {

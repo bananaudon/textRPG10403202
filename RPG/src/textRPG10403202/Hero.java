@@ -1,3 +1,4 @@
+package textRPG10403202;
 public class Hero extends RPGCharacter {
     int nextLv, EXP, steps, luck;
 
@@ -19,13 +20,13 @@ public class Hero extends RPGCharacter {
     }
 
     @Override
-    void damage(int damage) {
+    public void damage(int damage) {
         this.nowHP -= damage;
         RPG2.refresh();
     }
 
     @Override
-    void heal(int heal) {
+    public void heal(int heal) {
         this.nowHP += heal;
         RPG2.refresh();
     }

@@ -1,15 +1,16 @@
-public class eventE {
+package textRPG10403202;
+public class event {
     int probability;
     int eventType;
     int eventPower;
 
-    eventE() {
+    event() {
         probability = 0;
         eventType = 0;
         eventPower = 0;
     }
 
-    eventE(int P, int ET, int EP) {
+    event(int P, int ET, int EP) {
         probability = P;
         eventType = ET;
         eventPower = EP;

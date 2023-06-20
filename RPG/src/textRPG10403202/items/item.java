@@ -1,3 +1,5 @@
+package textRPG10403202.items;
+import textRPG10403202.RPGCharacter;
 public abstract class item {
     int itemID;
     int itemType;
@@ -11,8 +13,16 @@ public abstract class item {
         remaining = R;
     }
 
-    abstract void executionItem(RPGCharacter c);
-
+    public abstract void executionItem(RPGCharacter c);
+    public String getItemName(){
+        return this.itemName;
+    }
+    public int getRemaining(){
+        return this.remaining;
+    }
+    public void use(){
+        remaining--;
+    }
     item() {
         itemID = 0;
         itemType = 0;

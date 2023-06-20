@@ -1,3 +1,4 @@
+package textRPG10403202;
 public abstract class RPGCharacter {
     public String name;
     
@@ -24,7 +25,7 @@ public abstract class RPGCharacter {
 
     abstract void attack(RPGCharacter c);
 
-    abstract void damage(int damage);
+    public abstract void damage(int damage);
 
-    abstract void heal(int heal);
+    public abstract void heal(int heal);
 }
