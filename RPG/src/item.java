@@ -11,7 +11,7 @@ public abstract class item {
         remaining = R;
     }
 
-    abstract void executionItem(Character c);
+    abstract void executionItem(RPGCharacter c);
 
     item() {
         itemID = 0;

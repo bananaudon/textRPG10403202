@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class itemBagJFrame extends JFrame implements ActionListener {
-	Character mC;
+	RPGCharacter mC;
 	public itemBag BAG = new itemBag();
 	JTextField[] itemtxt = new JTextField[BAG.bags.length];
 	JButton selectedUp = new JButton("↑");
@@ -13,10 +13,10 @@ public class itemBagJFrame extends JFrame implements ActionListener {
 
 	itemBagJFrame() {
 		BAG.setEmpty();
-		BAG.setItem(0, new item_Heal_LowPotion(40));
+		BAG.setItem(0, new item_Heal_Low(40));
 		BAG.setHealItem(0);
-		BAG.addItem(new item_Heal_LowPotion(40));
-		BAG.addItem(new item_Heal_LowPotion(40));
+		BAG.addItem(new item_Heal_Low(40));
+		BAG.addItem(new item_Heal_Low(40));
 
 		JPanel bwjpC = new JPanel();
 		JPanel bwjpE = new JPanel();
@@ -80,7 +80,7 @@ public class itemBagJFrame extends JFrame implements ActionListener {
 		itemtxt[selectedBagNumber].setText(BAG.bags[selectedBagNumber].itemName);
 	}
 
-	public void openItemBag(Character c) {
+	public void openItemBag(RPGCharacter c) {
 		this.mC = c;
 		setVisible(true);
 	}

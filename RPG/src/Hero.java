@@ -1,4 +1,4 @@
-public class Hero extends Character {
+public class Hero extends RPGCharacter {
     int nextLv, EXP, steps, luck;
 
     Hero(int level, int maxHP, int currentHP, int power,int nL, int E, int s, int lu){
@@ -13,7 +13,7 @@ public class Hero extends Character {
     }
 
     @Override
-    void attack(Character c) {
+    void attack(RPGCharacter c) {
         System.out.println(this.name + "は" + c.name + "を攻撃した");
         RPG2.refresh();
     }

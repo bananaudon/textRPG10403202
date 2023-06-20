@@ -1,4 +1,4 @@
-public abstract class Character {
+public abstract class RPGCharacter {
     public String name;
     
     //将来的にprotectedに書き換えたい
@@ -7,7 +7,7 @@ public abstract class Character {
     public int nowHP;
     public int Pow;
 
-    Character(int level, int maxHP, int currentHP, int power) {
+    RPGCharacter(int level, int maxHP, int currentHP, int power) {
         this.lv = level;
         this.maxHP = maxHP;
         this.nowHP = currentHP;
@@ -22,7 +22,7 @@ public abstract class Character {
         Pow = (int) (Math.random() * (PRange + 1)) + minPow;
     }
 
-    abstract void attack(Character c);
+    abstract void attack(RPGCharacter c);
 
     abstract void damage(int damage);
 

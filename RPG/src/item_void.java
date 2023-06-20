@@ -6,6 +6,6 @@ public class item_void extends item {
         remaining = -1;
     }
 
-    void executionItem(Character c) {
+    void executionItem(RPGCharacter c) {
     }
 }
