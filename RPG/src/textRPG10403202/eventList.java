@@ -21,9 +21,9 @@ public class eventList {
         return new event();
     }
 
-    public void executeEvent(event executeEvent) {
+    public void executeEvent(event exeEvent) {
 
-        String EventMessage = switch (executeEvent.eventType) {
+        String EventMessage = switch (exeEvent.eventType) {
 
             case 0 -> {
                 int RandomNum = (int) (Math.random() * 3);
@@ -36,7 +36,7 @@ public class eventList {
                 };
             }
             case 1 -> {
-                RPG2.battle(executeEvent.eventPower);
+                RPG2.battle(exeEvent.eventPower);
                 yield "";
             }
             case 2 -> {

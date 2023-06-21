@@ -17,7 +17,6 @@ public class RPG2 extends JFrame implements ActionListener {
 		Event.executeEvent(Event.selectEvent(30));
 		new RPG2("RPG");
 	}
-
 	static String EnemyName = "";
 	static boolean fight = false;
 	static boolean turn = false;
@@ -200,7 +199,6 @@ public class RPG2 extends JFrame implements ActionListener {
 		refresh();
 		System.out.println("test" + mainCharacter.nowHP);
 	}
-
 	public static void refresh() {
 		if (mainCharacter.nowHP > mainCharacter.maxHP) {
 			mainCharacter.nowHP = mainCharacter.maxHP;
@@ -210,7 +208,6 @@ public class RPG2 extends JFrame implements ActionListener {
 		HPtxt.setText("HP" + mainCharacter.nowHP + "/" + mainCharacter.maxHP);
 		Lvtxt.setText("Lv." + mainCharacter.lv + "(" + mainCharacter.nextLv + ")");
 	}
-
 	public static void logWrite(String MAIN) {
 		MAIN += "\n";
 		log.append(MAIN);
