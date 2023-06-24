@@ -3,7 +3,7 @@ import textRPG10403202.RPGCharacter;
 public abstract class item {
     String itemName;
     int remaining;
-    void setItemStatus(int I, int IT, String N, int R) {
+    void setItemStatus(String N, int R) {
         itemName = N;
         remaining = R;
     }
@@ -16,9 +16,5 @@ public abstract class item {
     }
     public void use(){
         remaining--;
-    }
-    item() {
-        itemName = "NONE";
-        remaining = -1;
     }
 }
