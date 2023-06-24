@@ -3,6 +3,7 @@ import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
 
+import textRPG10403202.statusAilments.*;//後で消す
 public class RPG2 extends JFrame implements ActionListener {
 
 	//mainCharacterがHeroじゃなくなるようなことがあればfinalを外す
@@ -81,6 +82,13 @@ public class RPG2 extends JFrame implements ActionListener {
 		heal.addActionListener(this);
 		Attack.addActionListener(this);
 		itemBag.addActionListener(this);
+		//状態異常関連のテスト
+		mainCharacter.addAilment(new statusAilment_poison());
+		mainCharacter.addAilment(new statusAilment_poison());
+		mainCharacter.addAilment(new statusAilment_poison());
+		mainCharacter.addAilment(new statusAilment_poison());
+		mainCharacter.addAilment(new statusAilment_poison());
+		System.out.println(mainCharacter.countAilment(statusAilment_poison.class));
 	}
 
 	public static void walk(int steps) {
@@ -188,17 +196,6 @@ public class RPG2 extends JFrame implements ActionListener {
 		}
 	}
 
-	static void fixedHeal(int healSize) {
-		mainCharacter.nowHP += healSize;
-		refresh();
-		System.out.println("test" + mainCharacter.nowHP);
-	}
-
-	static void percentageHeal(int percentage) {
-		mainCharacter.nowHP += (int) (mainCharacter.maxHP * ((double) (percentage) / 100));
-		refresh();
-		System.out.println("test" + mainCharacter.nowHP);
-	}
 	public static void refresh() {
 		if (mainCharacter.nowHP > mainCharacter.maxHP) {
 			mainCharacter.nowHP = mainCharacter.maxHP;

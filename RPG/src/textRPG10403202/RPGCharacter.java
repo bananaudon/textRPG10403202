@@ -1,4 +1,5 @@
 package textRPG10403202;
+import textRPG10403202.statusAilments.statusAilment;
 public abstract class RPGCharacter {
     public String name;
     
@@ -7,7 +8,7 @@ public abstract class RPGCharacter {
     public int maxHP;
     public int nowHP;
     public int Pow;
-
+    private statusAilment[] characterAilment = new statusAilment[100];
     RPGCharacter(int level, int maxHP, int currentHP, int power) {
         this.lv = level;
         this.maxHP = maxHP;
@@ -28,4 +29,24 @@ public abstract class RPGCharacter {
     public abstract void damage(int damage);
 
     public abstract void heal(int heal);
+
+    public int countAilment(Class<? extends statusAilment> ailment){
+        int count = 0;
+        for(int i = 0;i < characterAilment.length;i++){
+            if(characterAilment[i] != null){
+                if(ailment.isInstance(characterAilment[i])){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+    public void addAilment(statusAilment sa){
+        for(int i = 0;i < characterAilment.length;i++){
+            if(characterAilment[i] == null){
+                characterAilment[i] = sa;
+                return;
+            }
+        }
+    }
 }
