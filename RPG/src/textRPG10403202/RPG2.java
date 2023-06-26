@@ -24,6 +24,7 @@ public class RPG2 extends JFrame implements ActionListener {
 	ItemBagJFrame iBJ;
 	static EventList Event = new EventList();
 
+	GameManager gameManager = new GameManager();
 	public static void main(String args[]) {
 		//refresh();
 		Event.executeEvent(Event.selectEvent(30));

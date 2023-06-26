@@ -12,7 +12,7 @@ public class GameManager {
         System.out.println("エラーメッセージ:" + activeGameState + "から" + newState + "へは移行できません、システムを終了します");
         System.exit(0);
     }
-    boolean checkStatus(GameState newState){
+    private boolean checkStatus(GameState newState){
         if(newState == GameState.EXPLORE||newState == GameState.GAME_OVER){
             return true;
         }
