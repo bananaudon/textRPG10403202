@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-import textRPG10403202.items.item_Heal_Low;
+import textRPG10403202.items.Heal_Low;
 public class itemBagJFrame extends JFrame implements ActionListener {
 	RPGCharacter mC;
 	public itemBag BAG = new itemBag();
@@ -15,10 +15,10 @@ public class itemBagJFrame extends JFrame implements ActionListener {
 
 	itemBagJFrame() {
 		BAG.setEmpty();
-		BAG.setItem(0, new item_Heal_Low(40));
+		BAG.setItem(0, new Heal_Low(40));
 		BAG.setHealItem(0);
-		BAG.addItem(new item_Heal_Low(40));
-		BAG.addItem(new item_Heal_Low(40));
+		BAG.addItem(new Heal_Low(40));
+		BAG.addItem(new Heal_Low(40));
 
 		JPanel bwjpC = new JPanel();
 		JPanel bwjpE = new JPanel();
@@ -56,13 +56,12 @@ public class itemBagJFrame extends JFrame implements ActionListener {
 		} else if (e.getSource() == selectedDown) {
 			selectedBagNumber++;
 		} else if (e.getSource() == useItem) {
-			BAG.bags[selectedBagNumber].executionItem(mC);
-			if (BAG.bags[selectedBagNumber].getRemaining() == 0) {
+			BAG.bags[selectedBagNumber].use(mC);
+			if (BAG.bags[selectedBagNumber].getdurability() == 0) {
 				BAG.breakItem(selectedBagNumber);
 			}
 		}
 
-		// System.out.println(selectedBagNumber);
 		selectedItem();
 	}
 

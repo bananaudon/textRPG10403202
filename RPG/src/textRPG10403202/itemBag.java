@@ -1,19 +1,17 @@
 package textRPG10403202;
 import textRPG10403202.items.item;
 import textRPG10403202.items.item_void;
-import textRPG10403202.items.item_Heal;
+import textRPG10403202.items.Heal;
 public class itemBag {
     item[] bags = new item[20];
     item healItem = new item_void();
-
     public void setEmpty() {
         for (int i = 0; i < bags.length; i++) {
             bags[i] = new item_void();
         }
     }
-
     public void setHealItem(int bagNumber) {
-        if (bags[bagNumber] instanceof item_Heal) {
+        if (bags[bagNumber] instanceof Heal) {
             healItem = bags[bagNumber];
             bags[bagNumber] = new item_void();
         }

@@ -31,7 +31,7 @@ public class RPG2 extends JFrame implements ActionListener {
 			JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
 	JButton next = new JButton("前に進む");
-	static JButton heal = new JButton("回復:" + iBJ.BAG.healItem.getRemaining());
+	static JButton heal = new JButton("回復:" + iBJ.BAG.healItem.getdurability());
 	JButton GiveUp = new JButton("あきらめる");
 	JButton Attack = new JButton("攻撃");
 	JButton charge = new JButton("ためる");
@@ -102,9 +102,9 @@ public class RPG2 extends JFrame implements ActionListener {
 		if (e.getSource() == next) {
 			walk(1);
 		} else if (e.getSource() == heal) {
-			if (iBJ.BAG.healItem.getRemaining() > 0) {
-				iBJ.BAG.healItem.use();
-				log.append("ポーションを使って回復した、残りは" + iBJ.BAG.healItem.getRemaining() + "\n");
+			if (iBJ.BAG.healItem.getdurability() > 0) {
+				iBJ.BAG.healItem.use(mainCharacter);
+				log.append("ポーションを使って回復した、残りは" + iBJ.BAG.healItem.getdurability() + "\n");
 				mainCharacter.nowHP += (mainCharacter.maxHP - mainCharacter.nowHP) / 2 + 10;
 				if (mainCharacter.nowHP > mainCharacter.maxHP) {
 					mainCharacter.nowHP = mainCharacter.maxHP;
@@ -204,7 +204,7 @@ public class RPG2 extends JFrame implements ActionListener {
 			mainCharacter.nowHP = mainCharacter.maxHP;
 		}
 		Powtxt.setText("Power" + mainCharacter.Pow);
-		heal.setText("回復:" + iBJ.BAG.healItem.getRemaining());
+		heal.setText("回復:" + iBJ.BAG.healItem.getdurability());
 		HPtxt.setText("HP" + mainCharacter.nowHP + "/" + mainCharacter.maxHP);
 		Lvtxt.setText("Lv." + mainCharacter.lv + "(" + mainCharacter.nextLv + ")");
 	}
