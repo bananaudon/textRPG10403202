@@ -191,18 +191,6 @@ public class RPG2 extends JFrame implements ActionListener {
 			System.exit(1);
 		}
 	}
-
-	static void fixedHeal(int healSize) {
-		mainCharacter.nowHP += healSize;
-		refresh();
-		System.out.println("test" + mainCharacter.nowHP);
-	}
-
-	static void percentageHeal(int percentage) {
-		mainCharacter.nowHP += (int) (mainCharacter.maxHP * ((double) (percentage) / 100));
-		refresh();
-		System.out.println("test" + mainCharacter.nowHP);
-	}
 	public static void refresh() {
 		if (mainCharacter.nowHP > mainCharacter.maxHP) {
 			mainCharacter.nowHP = mainCharacter.maxHP;
