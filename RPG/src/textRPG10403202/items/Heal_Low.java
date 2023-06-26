@@ -2,7 +2,7 @@ package textRPG10403202.items;
 
 import textRPG10403202.RPGCharacter;
 import textRPG10403202.RPG2;
-public class Heal_Low extends Heal implements item{
+public class Heal_Low extends Heal implements Item{
     public Heal_Low(int fixedHeal) {
         this(fixedHeal,"低位ポーション",5);
     }

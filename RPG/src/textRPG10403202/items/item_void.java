@@ -1,7 +1,7 @@
 package textRPG10403202.items;
 
 import textRPG10403202.RPGCharacter;
-public class item_void implements item {
+public class Item_void implements Item {
     public String getItemName(){
         return "none";
     }

@@ -1,6 +1,6 @@
 package textRPG10403202;
 
-public enum gameState {
+public enum GameState {
     EXPLORE,
     BATTLE,
     SELECT,

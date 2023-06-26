@@ -1,27 +1,27 @@
 package textRPG10403202;
-public class eventList {
-    event[] events = new event[4];
+public class EventList {
+    Event[] events = new Event[4];
 
-    eventList() {
+    EventList() {
         for (int i = 0; i < events.length; i++)
-            events[i] = new event();
-        events[0] = new event(40, 0, 0);
-        events[1] = new event(60, 1, 0);
-        events[2] = new event(80, 2, 0);
-        events[3] = new event(90, 1, 1);
+            events[i] = new Event();
+        events[0] = new Event(40, 0, 0);
+        events[1] = new Event(60, 1, 0);
+        events[2] = new Event(80, 2, 0);
+        events[3] = new Event(90, 1, 1);
     }
 
-    public event selectEvent(int randomRange) {
+    public Event selectEvent(int randomRange) {
         int randomNumber = (int) (Math.random() * randomRange);
         for (int i = 0; i < events.length; i++) {
             if (randomNumber <= events[i].probability) {
                 return events[i];
             }
         }
-        return new event();
+        return new Event();
     }
 
-    public void executeEvent(event exeEvent) {
+    public void executeEvent(Event exeEvent) {
 
         String EventMessage = switch (exeEvent.eventType) {
 

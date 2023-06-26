@@ -21,8 +21,8 @@ public class RPG2 extends JFrame implements ActionListener {
 	static final Hero mainCharacter = new Hero(1,100,100,5,100,0,1,0);
 
 	// static itemBag itembag = new itemBag();
-	itemBagJFrame iBJ;
-	static eventList Event = new eventList();
+	ItemBagJFrame iBJ;
+	static EventList Event = new EventList();
 
 	public static void main(String args[]) {
 		//refresh();
@@ -51,7 +51,7 @@ public class RPG2 extends JFrame implements ActionListener {
 	static int[] EnemyStatus = Enemy(0);
 
 	RPG2(String title) {
-		iBJ = new itemBagJFrame(mainCharacter.characterHave);
+		iBJ = new ItemBagJFrame(mainCharacter.characterHave);
 		setTitle(title);
 
 		log.setLineWrap(true);

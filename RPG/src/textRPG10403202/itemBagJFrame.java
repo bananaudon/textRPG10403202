@@ -14,15 +14,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import textRPG10403202.items.Heal_Low;
-public class itemBagJFrame extends JFrame implements ActionListener {
-	itemBag BAG;
+public class ItemBagJFrame extends JFrame implements ActionListener {
+	ItemBag BAG;
 	JTextField[] itemtxt = new JTextField[20];
 	JButton selectedUp = new JButton("↑");
 	JButton selectedDown = new JButton("↓");
 	JButton useItem = new JButton("使う");
 	int selectedBagNumber = 0;
 
-	itemBagJFrame(itemBag ib) {
+	ItemBagJFrame(ItemBag ib) {
 		BAG = ib;
 		BAG.setEmpty();
 		BAG.setItem(0, new Heal_Low(40));
