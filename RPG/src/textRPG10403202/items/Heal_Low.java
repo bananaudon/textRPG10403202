@@ -10,7 +10,7 @@ public class Heal_Low extends Heal implements item{
         this(fixedHeal,name,5);
     }
     public Heal_Low(int fixedHeal,String name,int durability) {
-        super(name,durability);
+        super(name,durability,1);
         this.fixedHeal = fixedHeal;
     }
     public static void applyEffect(RPGCharacter c,Heal_Low HL) {

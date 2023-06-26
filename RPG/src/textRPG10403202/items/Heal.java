@@ -4,8 +4,9 @@ public abstract class Heal{
     private String itemName;
     private int durability,durabilityLossPerUse;
     protected int fixedHeal;
-    Heal(String n,int d){
+    Heal(String n,int d,int dl){
         this.durability = d;
+        this.durabilityLossPerUse = dl;
         this.itemName = n;
     }
     public String getItemName(){

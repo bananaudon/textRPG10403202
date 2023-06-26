@@ -6,7 +6,7 @@ public class item_void implements item {
         return "none";
     }
     public int getdurability(){
-        return -1;
+        return 0;
     }
     public void Rename(String name){}
     public void setdurability(int durability){}

@@ -9,35 +9,39 @@ public class itemBag {
     itemBag(RPGCharacter owner){
         this.owner = owner;
     }
-    public void setEmpty() {
+    void setEmpty() {
         for (int i = 0; i < items.length; i++) {
-            bags[i] = new item_void();
-        }
-    }
-    public void setHealItem(int bagNumber) {
-        if (bags[bagNumber] instanceof Heal) {
-            healItem = bags[bagNumber];
-            bags[bagNumber] = new item_void();
+            items[i] = new item_void();
         }
     }
 
-    public void setItem(int bagNumber, item Item) {
-        bags[bagNumber] = Item;
+    void setHealItem(int bagNumber) {
+        if (items[bagNumber] instanceof Heal) {
+            healItem = items[bagNumber];
+            items[bagNumber] = new item_void();
+        }
+    }
+
+    void breakHealItem(){
+        healItem = new item_void();
+    }
+    void setItem(int bagNumber, item Item) {
+        items[bagNumber] = Item;
         System.out.println(bagNumber + "番に" + Item.getItemName() + "を入れたよ このコメントはitemBagクラスのsetItemメソッド");
     }
 
-    public void addItem(item Item) {
-        for (int i = 0; i < bags.length; i++) {
-            if (bags[i] instanceof item_void) {
-                bags[i] = Item;
+    void addItem(item Item) {
+        for (int i = 0; i < items.length; i++) {
+            if (items[i] instanceof item_void) {
+                items[i] = Item;
                 System.out.println(i + "番に" + Item.getItemName() + "を入れたよ このコメントはitemBagクラスのaddItemメソッド");
                 break;
             }
         }
     }
 
-    public void breakItem(int bagNumber) {
-        RPG2.logWrite(String.valueOf(bags[bagNumber].getItemName() + "が壊れた"));
-        bags[bagNumber] = new item_void();
+    void breakItem(int bagNumber) {
+        RPG2.logWrite(String.valueOf(items[bagNumber].getItemName() + "が壊れた"));
+        items[bagNumber] = new item_void();
     }
 }

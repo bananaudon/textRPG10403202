@@ -108,10 +108,9 @@ public class RPG2 extends JFrame implements ActionListener {
 		} else if (e.getSource() == heal) {
 			if (iBJ.BAG.healItem.getdurability() > 0) {
 				iBJ.BAG.healItem.use(mainCharacter);
-				log.append("ポーションを使って回復した、残りは" + iBJ.BAG.healItem.getdurability() + "\n");
-				mainCharacter.nowHP += (mainCharacter.maxHP - mainCharacter.nowHP) / 2 + 10;
-				if (mainCharacter.nowHP > mainCharacter.maxHP) {
-					mainCharacter.nowHP = mainCharacter.maxHP;
+				RPG2.logWrite("ポーションを使って回復した、残りは" + iBJ.BAG.healItem.getdurability());
+				if(iBJ.BAG.healItem.isBreak()){
+					iBJ.BAG.breakHealItem();
 				}
 			} else {
 				log.append("ポーションはもうない\n");
