@@ -8,11 +8,11 @@ public class item_void implements item {
     public int getdurability(){
         return -1;
     }
-    public void setItemName(String name){}
+    public void Rename(String name){}
     public void setdurability(int durability){}
     public void use(RPGCharacter target){}
     public void decrementdurability() {}
-    public void applyEffect(RPGCharacter target){}
+    //public void applyEffect(RPGCharacter target){}
     public boolean isBreak(){
         return false;
     };
