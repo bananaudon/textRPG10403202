@@ -181,7 +181,7 @@ public class RPG2 extends JFrame implements ActionListener {
 	public static void Damage(int damagetype) {
 		switch (damagetype) {
 			case 0:
-				mainCharacter.nowHP -= EnemyStatus[3];
+				mainCharacter.damage(EnemyStatus[3]);
 				log.append(EnemyName + "から" + EnemyStatus[3] + "のダメージ\n");
 				refresh();
 				break;
