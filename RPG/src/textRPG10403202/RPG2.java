@@ -57,7 +57,7 @@ public class RPG2 extends JFrame implements ActionListener {
 		getContentPane().add(jpS, BorderLayout.SOUTH);
 		getContentPane().add(jpE, BorderLayout.EAST);
 
-		heal = new JButton("回復:" + iBJ.BAG.healItem.getdurability());
+		heal = new JButton("");
 
 		jpN.add(next);
 		jpN.add(heal);
@@ -85,6 +85,7 @@ public class RPG2 extends JFrame implements ActionListener {
 		heal.addActionListener(this);
 		Attack.addActionListener(this);
 		itemBag.addActionListener(this);
+		refresh();
 	}
 
 	public static void walk(int steps) {
@@ -108,7 +109,7 @@ public class RPG2 extends JFrame implements ActionListener {
 		} else if (e.getSource() == heal) {
 			if (iBJ.BAG.healItem.getdurability() > 0) {
 				iBJ.BAG.healItem.use(mainCharacter);
-				RPG2.logWrite("ポーションを使って回復した、残りは" + iBJ.BAG.healItem.getdurability());
+				RPG2.logWrite("ポーションを使って回復した、残り耐久値は" + iBJ.BAG.healItem.getdurability());
 				if(iBJ.BAG.healItem.isBreak()){
 					iBJ.BAG.breakHealItem();
 				}
@@ -207,7 +208,7 @@ public class RPG2 extends JFrame implements ActionListener {
 			mainCharacter.nowHP = mainCharacter.maxHP;
 		}
 		Powtxt.setText("Power" + mainCharacter.Pow);
-		heal.setText("回復:" + mainCharacter.characterHave.healItem.getdurability());
+		heal.setText("回復耐久値:" + mainCharacter.characterHave.healItem.getdurability());
 		HPtxt.setText("HP" + mainCharacter.nowHP + "/" + mainCharacter.maxHP);
 		Lvtxt.setText("Lv." + mainCharacter.lv + "(" + mainCharacter.nextLv + ")");
 	}
