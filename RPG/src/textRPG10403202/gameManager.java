@@ -21,4 +21,26 @@ public class GameManager {
         }
         return false;
     }
+    void nextStatus(){
+        switch(activeGameState){
+            case EXPLORE -> {
+
+            }
+            case ACT -> {
+
+            }
+            case BATTLE -> {
+                activeGameState = GameState.BATTLE_ENEMY;
+            }
+            case BATTLE_ENEMY -> {
+                activeGameState = GameState.BATTLE;
+            }
+            case SELECT -> {
+
+            }
+            case GAME_OVER -> {
+
+            }
+        }
+    }
 }
