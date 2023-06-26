@@ -5,5 +5,5 @@ public enum GameState {
     ACT,
     BATTLE,
     SELECT,
-    GAME_OVER
+    GAME_OVER,
 }

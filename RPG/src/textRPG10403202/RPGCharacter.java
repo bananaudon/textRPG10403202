@@ -18,6 +18,9 @@ public abstract class RPGCharacter {
 
     void useHealItem(){
         this.characterHave.healItem.use(this);
+        if(characterHave.healItem.isBreak()){
+            characterHave.breakHealItem();
+        }
     }
     public void randomStatus(int minLv, int minMaxHP, int minNowHP, int minPow, int LRange, int MHRange, int NHRange,
             int PRange) {
