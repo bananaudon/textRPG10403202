@@ -1,7 +1,7 @@
 package textRPG10403202;
 public class gameManager {
     private gameState activeGameState = gameState.EXPLORE;
-    gameState getNowGameState(){
+    gameState getActiveGameState(){
         return this.activeGameState;
     }
     void setStatus(gameState newState){
