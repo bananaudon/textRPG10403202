@@ -3,14 +3,14 @@ import textRPG10403202.items.item;
 import textRPG10403202.items.item_void;
 import textRPG10403202.items.Heal;
 public class itemBag {
-    item[] bags = new item[20];
+    item[] items = new item[20];
     item healItem = new item_void();
     RPGCharacter owner;
     itemBag(RPGCharacter owner){
         this.owner = owner;
     }
     public void setEmpty() {
-        for (int i = 0; i < bags.length; i++) {
+        for (int i = 0; i < items.length; i++) {
             bags[i] = new item_void();
         }
     }

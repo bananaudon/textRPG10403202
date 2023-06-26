@@ -5,7 +5,7 @@ import java.awt.event.*;
 
 import textRPG10403202.items.Heal_Low;
 public class itemBagJFrame extends JFrame implements ActionListener {
-	public itemBag BAG;
+	itemBag BAG;
 	JTextField[] itemtxt = new JTextField[20];
 	JButton selectedUp = new JButton("↑");
 	JButton selectedDown = new JButton("↓");
@@ -29,8 +29,8 @@ public class itemBagJFrame extends JFrame implements ActionListener {
 		bwjpC.setLayout(new BoxLayout(bwjpC, BoxLayout.Y_AXIS));
 		bwjpE.setLayout(new BoxLayout(bwjpE, BoxLayout.Y_AXIS));
 
-		for (int i = 0; i < BAG.bags.length; i++) {
-			itemtxt[i] = new JTextField(BAG.bags[i].getItemName());
+		for (int i = 0; i < BAG.items.length; i++) {
+			itemtxt[i] = new JTextField(BAG.items[i].getItemName());
 			itemtxt[i].setEditable(false);
 			bwjpC.add(itemtxt[i]);
 		}
@@ -56,8 +56,8 @@ public class itemBagJFrame extends JFrame implements ActionListener {
 		} else if (e.getSource() == selectedDown) {
 			selectedBagNumber++;
 		} else if (e.getSource() == useItem) {
-			BAG.bags[selectedBagNumber].use(BAG.owner);
-			if (BAG.bags[selectedBagNumber].getdurability() == 0) {
+			BAG.items[selectedBagNumber].use(BAG.owner);
+			if (BAG.items[selectedBagNumber].getdurability() == 0) {
 				BAG.breakItem(selectedBagNumber);
 			}
 		}
@@ -78,10 +78,10 @@ public class itemBagJFrame extends JFrame implements ActionListener {
 		}
 		
 		itemtxt[selectedBagNumber].setBackground(new Color(128, 128, 255));
-		itemtxt[selectedBagNumber].setText(BAG.bags[selectedBagNumber].getItemName());
+		itemtxt[selectedBagNumber].setText(BAG.items[selectedBagNumber].getItemName());
 	}
 
-	public void openItemBag() {
+	void openItemBag() {
 		setVisible(true);
 	}
 }
