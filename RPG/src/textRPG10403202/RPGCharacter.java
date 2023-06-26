@@ -7,8 +7,9 @@ public abstract class RPGCharacter {
     public int maxHP;
     public int nowHP;
     public int Pow;
-
+    itemBag characterHave;
     RPGCharacter(int level, int maxHP, int currentHP, int power) {
+        characterHave = new itemBag(this);
         this.lv = level;
         this.maxHP = maxHP;
         this.nowHP = currentHP;

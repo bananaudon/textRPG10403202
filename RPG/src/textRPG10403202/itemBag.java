@@ -5,6 +5,10 @@ import textRPG10403202.items.Heal;
 public class itemBag {
     item[] bags = new item[20];
     item healItem = new item_void();
+    RPGCharacter owner;
+    itemBag(RPGCharacter owner){
+        this.owner = owner;
+    }
     public void setEmpty() {
         for (int i = 0; i < bags.length; i++) {
             bags[i] = new item_void();

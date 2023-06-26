@@ -9,11 +9,11 @@ public class RPG2 extends JFrame implements ActionListener {
 	static final Hero mainCharacter = new Hero(1,100,100,5,100,0,1,0);
 
 	// static itemBag itembag = new itemBag();
-	static itemBagJFrame iBJ = new itemBagJFrame();
+	itemBagJFrame iBJ;
 	static eventList Event = new eventList();
 
 	public static void main(String args[]) {
-		refresh();
+		//refresh();
 		Event.executeEvent(Event.selectEvent(30));
 		new RPG2("RPG");
 	}
@@ -31,7 +31,7 @@ public class RPG2 extends JFrame implements ActionListener {
 			JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
 	JButton next = new JButton("前に進む");
-	static JButton heal = new JButton("回復:" + iBJ.BAG.healItem.getdurability());
+	static JButton heal;
 	JButton GiveUp = new JButton("あきらめる");
 	JButton Attack = new JButton("攻撃");
 	JButton charge = new JButton("ためる");
@@ -39,6 +39,7 @@ public class RPG2 extends JFrame implements ActionListener {
 	static int[] EnemyStatus = Enemy(0);
 
 	RPG2(String title) {
+		iBJ = new itemBagJFrame(mainCharacter.characterHave);
 		setTitle(title);
 
 		log.setLineWrap(true);
@@ -56,6 +57,8 @@ public class RPG2 extends JFrame implements ActionListener {
 		getContentPane().add(jpS, BorderLayout.SOUTH);
 		getContentPane().add(jpE, BorderLayout.EAST);
 
+		heal = new JButton("回復:" + iBJ.BAG.healItem.getdurability());
+
 		jpN.add(next);
 		jpN.add(heal);
 		jpN.add(GiveUp);
@@ -72,6 +75,7 @@ public class RPG2 extends JFrame implements ActionListener {
 		jpE.add(charge);
 		jpE.add(itemBag);
 
+		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		setSize(450, 300);
@@ -130,7 +134,7 @@ public class RPG2 extends JFrame implements ActionListener {
 				log.append("攻撃はむなしく空ぶった\n");
 			}
 		} else if (e.getSource() == itemBag) {
-			iBJ.openItemBag(mainCharacter);
+			iBJ.openItemBag();
 		}
 		refresh();
 	}
@@ -204,7 +208,7 @@ public class RPG2 extends JFrame implements ActionListener {
 			mainCharacter.nowHP = mainCharacter.maxHP;
 		}
 		Powtxt.setText("Power" + mainCharacter.Pow);
-		heal.setText("回復:" + iBJ.BAG.healItem.getdurability());
+		heal.setText("回復:" + mainCharacter.characterHave.healItem.getdurability());
 		HPtxt.setText("HP" + mainCharacter.nowHP + "/" + mainCharacter.maxHP);
 		Lvtxt.setText("Lv." + mainCharacter.lv + "(" + mainCharacter.nextLv + ")");
 	}
