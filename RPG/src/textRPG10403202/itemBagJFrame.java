@@ -1,7 +1,17 @@
 package textRPG10403202;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+//import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.BoxLayout;
+//import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+
+//import java.awt.event.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import textRPG10403202.items.Heal_Low;
 public class itemBagJFrame extends JFrame implements ActionListener {

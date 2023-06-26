@@ -1,7 +1,19 @@
 package textRPG10403202;
-import java.awt.event.*;
-import java.awt.*;
-import javax.swing.*;
+//import java.awt.event.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+//import java.awt.*;
+import java.awt.BorderLayout;
+
+//import javax.swing.*
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.BoxLayout;
 
 public class RPG2 extends JFrame implements ActionListener {
 
