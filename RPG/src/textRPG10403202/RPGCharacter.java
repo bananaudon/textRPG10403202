@@ -1,4 +1,6 @@
 package textRPG10403202;
+
+import textRPG10403202.items.Item;
 public abstract class RPGCharacter {
     public String name;
     
@@ -17,11 +19,21 @@ public abstract class RPGCharacter {
     }
 
     void useHealItem(){
-        this.characterHave.healItem.use(this);
-        if(characterHave.healItem.isBreak()){
-            characterHave.breakHealItem();
-        }
+        this.characterHave.useHealItem();
     }
+
+    void useItem(int bagNumber){
+        this.characterHave.useItem(bagNumber);
+    }
+
+    void gotItem(Item item){
+        this.characterHave.addItem(item);
+    }
+
+    void setHeal(int bagNumber){
+        this.characterHave.setHealItem(bagNumber);
+    }
+    
     public void randomStatus(int minLv, int minMaxHP, int minNowHP, int minPow, int LRange, int MHRange, int NHRange,
             int PRange) {
         lv = (int) (Math.random() * (LRange + 1)) + minLv;

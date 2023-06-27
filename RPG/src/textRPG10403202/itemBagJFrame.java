@@ -25,7 +25,7 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 
 	ItemBagJFrame(RPGCharacter owner) {
 		BAG = owner.characterHave;
-		BAG.setItem(0, new Heal_Low(40));
+		BAG.addItem(new Heal_Low(40));
 		BAG.setHealItem(0);
 		BAG.addItem(new Heal_Low(40));
 		BAG.addItem(new Heal_Low(40));
