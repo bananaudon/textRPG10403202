@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import textRPG10403202.items.Heal_Low;
+
 public class ItemBagJFrame extends JFrame implements ActionListener {
 	ItemBag BAG;
 	JTextField[] itemtxt = new JTextField[20];
@@ -24,7 +25,6 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 
 	ItemBagJFrame(RPGCharacter owner) {
 		BAG = owner.characterHave;
-		BAG.setEmpty();
 		BAG.setItem(0, new Heal_Low(40));
 		BAG.setHealItem(0);
 		BAG.addItem(new Heal_Low(40));

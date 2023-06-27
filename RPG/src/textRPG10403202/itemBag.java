@@ -8,6 +8,7 @@ public class ItemBag {
     RPGCharacter owner;
     ItemBag(RPGCharacter character){
         this.owner = character;
+        this.setEmpty();
     }
     void setEmpty() {
         for (int i = 0; i < items.length; i++) {
