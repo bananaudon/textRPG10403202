@@ -198,7 +198,7 @@ public class RPG2 extends JFrame implements ActionListener {
 			mainCharacter.nowHP = mainCharacter.maxHP;
 		}
 		Powtxt.setText("Power" + mainCharacter.Pow);
-		heal.setText("回復耐久値:" + mainCharacter.characterHave.healItem.getdurability());
+		heal.setText("回復耐久値:" + mainCharacter.getHealItemdurability());
 		HPtxt.setText("HP" + mainCharacter.nowHP + "/" + mainCharacter.maxHP);
 		Lvtxt.setText("Lv." + mainCharacter.lv + "(" + mainCharacter.nextLv + ")");
 	}

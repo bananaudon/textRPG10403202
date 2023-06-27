@@ -39,9 +39,9 @@ public abstract class RPGCharacter {
     }
 
     int getHealItemdurability(){
-        return characterHave.healItem.getdurability();
+        return this.characterHave.getHealItemdurability();
     }
-    
+
     public void randomStatus(int minLv, int minMaxHP, int minNowHP, int minPow, int LRange, int MHRange, int NHRange,
             int PRange) {
         lv = (int) (Math.random() * (LRange + 1)) + minLv;

@@ -1,10 +1,13 @@
 package textRPG10403202;
+
+import textRPG10403202.items.ItemInfo;
 import textRPG10403202.items.Item;
 import textRPG10403202.items.Item_void;
 import textRPG10403202.items.Heal;
+
 public class ItemBag {
-    Item[] items = new Item[20];
-    Item healItem = new Item_void();
+    private Item[] items = new Item[20];
+    private Item healItem = new Item_void();
     RPGCharacter owner;
     ItemBag(RPGCharacter character){
         this.owner = character;
@@ -19,7 +22,7 @@ public class ItemBag {
             items[i] = new Item_void();
         }
     }
-    
+
     void addItem(Item Item) {
         for (int i = 0; i < items.length; i++) {
             if (items[i] instanceof Item_void) {
@@ -59,6 +62,13 @@ public class ItemBag {
         return itemNames;
     }
 
+    ItemInfo getItemInfo(int bagNumber){
+        return (ItemInfo)items[bagNumber];
+    }
+
+    int getHealItemdurability(){
+        return healItem.getdurability();
+    }
     //ここまで
 
     private void breakHealItem(){
