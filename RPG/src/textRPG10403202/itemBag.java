@@ -50,6 +50,13 @@ public class ItemBag {
         }
     }
 
+    String[] getItemNames(){
+        String itemNames[] = new String[items.length];
+            for(int i = 0;i < items.length;i++){
+                itemNames[i] = items[i].getItemName();
+            }
+        return itemNames;
+    }
     //ここまで
 
     private void breakHealItem(){
