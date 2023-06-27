@@ -37,8 +37,9 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 		bwjpC.setLayout(new BoxLayout(bwjpC, BoxLayout.Y_AXIS));
 		bwjpE.setLayout(new BoxLayout(bwjpE, BoxLayout.Y_AXIS));
 
-		for (int i = 0; i < BAG.items.length; i++) {
-			itemtxt[i] = new JTextField(BAG.items[i].getItemName());
+		String[] itemNames = owner.getItemNames();
+		for (int i = 0; i < itemNames.length; i++) {
+			itemtxt[i] = new JTextField(itemNames[i]);
 			itemtxt[i].setEditable(false);
 			bwjpC.add(itemtxt[i]);
 		}

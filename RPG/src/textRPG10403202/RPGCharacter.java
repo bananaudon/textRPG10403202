@@ -33,7 +33,10 @@ public abstract class RPGCharacter {
     void setHeal(int bagNumber){
         this.characterHave.setHealItem(bagNumber);
     }
-    
+
+    String[] getItemNames(){
+        return this.characterHave.getItemNames();
+    }
     public void randomStatus(int minLv, int minMaxHP, int minNowHP, int minPow, int LRange, int MHRange, int NHRange,
             int PRange) {
         lv = (int) (Math.random() * (LRange + 1)) + minLv;
