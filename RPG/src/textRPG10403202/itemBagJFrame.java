@@ -16,13 +16,15 @@ import java.awt.event.ActionEvent;
 import textRPG10403202.items.Heal_Low;
 
 public class ItemBagJFrame extends JFrame implements ActionListener {
+	RPGCharacter owner;
 	JTextField[] itemtxt = new JTextField[20];
 	JButton selectedUp = new JButton("↑");
 	JButton selectedDown = new JButton("↓");
 	JButton useItem = new JButton("使う");
 	int selectedBagNumber = 0;
 
-	ItemBagJFrame(RPGCharacter owner) {
+	ItemBagJFrame(RPGCharacter c) {
+		owner = c;
 		owner.gotItem(new Heal_Low(40));
 		owner.setHeal(0);
 		owner.gotItem(new Heal_Low(40));
@@ -65,10 +67,7 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 		} else if (e.getSource() == selectedDown) {
 			selectedBagNumber++;
 		} else if (e.getSource() == useItem) {
-			BAG.items[selectedBagNumber].use(BAG.owner);
-			if (BAG.items[selectedBagNumber].getdurability() == 0) {
-				BAG.breakItem(selectedBagNumber);
-			}
+			owner.useItem(selectedBagNumber);
 		}
 
 		selectedItem();
@@ -87,7 +86,7 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 		}
 		
 		itemtxt[selectedBagNumber].setBackground(new Color(128, 128, 255));
-		itemtxt[selectedBagNumber].setText(BAG.items[selectedBagNumber].getItemName());
+		//itemtxt[selectedBagNumber].setText(BAG.items[selectedBagNumber].getItemName());
 	}
 
 	void openItemBag() {

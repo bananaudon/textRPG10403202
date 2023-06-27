@@ -10,15 +10,16 @@ public class ItemBag {
         this.owner = character;
         this.setEmpty();
     }
+
+    //キャラクターが実行できるメソッド
+    //ここから
+
     void setEmpty() {
         for (int i = 0; i < items.length; i++) {
             items[i] = new Item_void();
         }
     }
-
-    //キャラクターが実行できるメソッド
-    //ここから
-
+    
     void addItem(Item Item) {
         for (int i = 0; i < items.length; i++) {
             if (items[i] instanceof Item_void) {
@@ -57,12 +58,12 @@ public class ItemBag {
             }
         return itemNames;
     }
+
     //ここまで
 
     private void breakHealItem(){
         healItem = new Item_void();
     }
-
 
     private void breakItem(int bagNumber) {
         RPG2.logWrite(String.valueOf(items[bagNumber].getItemName() + "が壊れた"));

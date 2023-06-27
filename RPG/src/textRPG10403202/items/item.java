@@ -1,7 +1,7 @@
 package textRPG10403202.items;
 
 import textRPG10403202.RPGCharacter;
-public interface Item {
+public interface Item extends ItemInfo{
     public String getItemName();
     public void Rename(String name);
     public int getdurability();
