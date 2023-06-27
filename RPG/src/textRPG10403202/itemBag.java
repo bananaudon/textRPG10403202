@@ -16,20 +16,8 @@ public class ItemBag {
         }
     }
 
-    void setHealItem(int bagNumber) {
-        if (items[bagNumber] instanceof Heal) {
-            healItem = items[bagNumber];
-            items[bagNumber] = new Item_void();
-        }
-    }
-
-    void breakHealItem(){
-        healItem = new Item_void();
-    }
-    void setItem(int bagNumber, Item Item) {
-        items[bagNumber] = Item;
-        System.out.println(bagNumber + "番に" + Item.getItemName() + "を入れたよ このコメントはitemBagクラスのsetItemメソッド");
-    }
+    //キャラクターが実行できるメソッド
+    //ここから
 
     void addItem(Item Item) {
         for (int i = 0; i < items.length; i++) {
@@ -41,7 +29,35 @@ public class ItemBag {
         }
     }
 
-    void breakItem(int bagNumber) {
+    void setHealItem(int bagNumber) {
+        if (items[bagNumber] instanceof Heal) {
+            healItem = items[bagNumber];
+            items[bagNumber] = new Item_void();
+        }
+    }
+
+    void useItem(int bagNumber){
+        items[bagNumber].use(owner);
+        if(items[bagNumber].isBreak()){
+            breakItem(bagNumber);
+        }
+    }
+    
+    void useHealItem(){
+        healItem.use(owner);
+        if(healItem.isBreak()){
+            breakHealItem();
+        }
+    }
+
+    //ここまで
+
+    private void breakHealItem(){
+        healItem = new Item_void();
+    }
+
+
+    private void breakItem(int bagNumber) {
         RPG2.logWrite(String.valueOf(items[bagNumber].getItemName() + "が壊れた"));
         items[bagNumber] = new Item_void();
     }
