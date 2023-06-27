@@ -52,7 +52,7 @@ public class RPG2 extends JFrame implements ActionListener {
 	static int[] EnemyStatus = Enemy(0);
 
 	RPG2(String title) {
-		iBJ = new ItemBagJFrame(mainCharacter.characterHave);
+		iBJ = new ItemBagJFrame(mainCharacter);
 		setTitle(title);
 
 		log.setLineWrap(true);

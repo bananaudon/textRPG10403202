@@ -22,8 +22,8 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 	JButton useItem = new JButton("使う");
 	int selectedBagNumber = 0;
 
-	ItemBagJFrame(ItemBag ib) {
-		BAG = ib;
+	ItemBagJFrame(RPGCharacter owner) {
+		BAG = owner.characterHave;
 		BAG.setEmpty();
 		BAG.setItem(0, new Heal_Low(40));
 		BAG.setHealItem(0);
