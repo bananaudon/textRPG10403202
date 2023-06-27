@@ -6,8 +6,8 @@ public class ItemBag {
     Item[] items = new Item[20];
     Item healItem = new Item_void();
     RPGCharacter owner;
-    ItemBag(RPGCharacter owner){
-        this.owner = owner;
+    ItemBag(RPGCharacter character){
+        this.owner = character;
     }
     void setEmpty() {
         for (int i = 0; i < items.length; i++) {
