@@ -1,6 +1,7 @@
 package textRPG10403202;
 
 import textRPG10403202.items.Item;
+import textRPG10403202.items.ItemInfo;
 public abstract class RPGCharacter {
     public String name;
     
@@ -42,6 +43,9 @@ public abstract class RPGCharacter {
         return this.characterHave.getHealItemdurability();
     }
 
+    ItemInfo getItemInfo(int bagNumber){
+        return this.characterHave.getItemInfo(bagNumber);
+    }
     public void randomStatus(int minLv, int minMaxHP, int minNowHP, int minPow, int LRange, int MHRange, int NHRange,
             int PRange) {
         lv = (int) (Math.random() * (LRange + 1)) + minLv;
