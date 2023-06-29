@@ -16,20 +16,20 @@ import java.awt.event.ActionEvent;
 import textRPG10403202.items.Heal_Low;
 
 public class ItemBagJFrame extends JFrame implements ActionListener {
-	private RPGCharacter owner;
+	private ItemBag OpenBag;
 	private JTextField[] itemtxt = new JTextField[20];
 	private JButton selectedUp = new JButton("↑");
 	private JButton selectedDown = new JButton("↓");
 	private JButton useItem = new JButton("使う");
 	private int selectedBagNumber = 0;
 
-	ItemBagJFrame(RPGCharacter c) {
-		owner = c;
+	ItemBagJFrame(ItemBag itembag) {
+		OpenBag = itembag;
 		System.out.println("ItemBagJFrameのコンストラクタでアイテムを追加します、動作確認用");
-		owner.gotItem(new Heal_Low(40));
-		owner.setHeal(0);
-		owner.gotItem(new Heal_Low(40));
-		owner.gotItem(new Heal_Low(40));
+		OpenBag.addItem(new Heal_Low(40));
+		OpenBag.setHealItem(0);
+		OpenBag.addItem(new Heal_Low(40));
+		OpenBag.addItem(new Heal_Low(40));
 
 		JPanel bwjpC = new JPanel();
 		JPanel bwjpE = new JPanel();
@@ -40,7 +40,7 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 		bwjpC.setLayout(new BoxLayout(bwjpC, BoxLayout.Y_AXIS));
 		bwjpE.setLayout(new BoxLayout(bwjpE, BoxLayout.Y_AXIS));
 
-		String[] itemNames = owner.getItemNames();
+		String[] itemNames = OpenBag.getItemNames();
 		for (int i = 0; i < itemNames.length; i++) {
 			itemtxt[i] = new JTextField(itemNames[i]);
 			itemtxt[i].setEditable(false);
@@ -67,7 +67,7 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 		} else if (e.getSource() == selectedDown) {
 			selectedBagNumber++;
 		} else if (e.getSource() == useItem) {
-			owner.useItem(selectedBagNumber);
+			OpenBag.useItem(selectedBagNumber);
 		}
 
 		selectedItem();
@@ -86,7 +86,7 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 		}
 		
 		itemtxt[selectedBagNumber].setBackground(new Color(128, 128, 255));
-		itemtxt[selectedBagNumber].setText(owner.getItemInfo(selectedBagNumber).getItemName());
+		itemtxt[selectedBagNumber].setText(OpenBag.getItemInfo(selectedBagNumber).getItemName());
 	}
 
 	void openItemBag() {

@@ -13,12 +13,12 @@ public abstract class RPGCharacter {
     private ItemBag characterHave;
     private ItemBagJFrame characterHaveJFrame;
     RPGCharacter(int level, int maxHP, int currentHP, int power) {
-        this.characterHave = new ItemBag(this);
         this.lv = level;
         this.maxHP = maxHP;
         this.nowHP = currentHP;
         this.Pow = power;
-        characterHaveJFrame = new ItemBagJFrame(this);
+        this.characterHave = new ItemBag(this);
+        this.characterHaveJFrame = new ItemBagJFrame(characterHave);
     }
 
     void useHealItem(){
