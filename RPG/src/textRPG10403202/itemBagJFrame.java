@@ -16,12 +16,12 @@ import java.awt.event.ActionEvent;
 import textRPG10403202.items.Heal_Low;
 
 public class ItemBagJFrame extends JFrame implements ActionListener {
-	RPGCharacter owner;
-	JTextField[] itemtxt = new JTextField[20];
-	JButton selectedUp = new JButton("↑");
-	JButton selectedDown = new JButton("↓");
-	JButton useItem = new JButton("使う");
-	int selectedBagNumber = 0;
+	private RPGCharacter owner;
+	private JTextField[] itemtxt = new JTextField[20];
+	private JButton selectedUp = new JButton("↑");
+	private JButton selectedDown = new JButton("↓");
+	private JButton useItem = new JButton("使う");
+	private int selectedBagNumber = 0;
 
 	ItemBagJFrame(RPGCharacter c) {
 		owner = c;
