@@ -29,16 +29,8 @@ public abstract class RPGCharacter {
         this.characterHave.addItem(item);
     }
 
-    void setHeal(int bagNumber){
-        this.characterHave.setHealItem(bagNumber);
-    }
-
     void openItemBag(){
         this.characterHaveJFrame.openItemBag();
-    }
-
-    ItemInfo getItemInfo(int bagNumber){
-        return this.characterHave.getItemInfo(bagNumber);
     }
 
     ItemInfo getHealItemInfo(){
