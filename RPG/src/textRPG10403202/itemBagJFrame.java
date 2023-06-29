@@ -25,6 +25,7 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 
 	ItemBagJFrame(RPGCharacter c) {
 		owner = c;
+		System.out.println("ItemBagJFrameのコンストラクタでアイテムを追加します、動作確認用");
 		owner.gotItem(new Heal_Low(40));
 		owner.setHeal(0);
 		owner.gotItem(new Heal_Low(40));
