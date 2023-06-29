@@ -11,12 +11,14 @@ public abstract class RPGCharacter {
     public int nowHP;
     public int Pow;
     private ItemBag characterHave;
+    private ItemBagJFrame characterHaveJFrame;
     RPGCharacter(int level, int maxHP, int currentHP, int power) {
         this.characterHave = new ItemBag(this);
         this.lv = level;
         this.maxHP = maxHP;
         this.nowHP = currentHP;
         this.Pow = power;
+        characterHaveJFrame = new ItemBagJFrame(this);
     }
 
     void useHealItem(){
@@ -41,6 +43,10 @@ public abstract class RPGCharacter {
 
     int getHealItemdurability(){
         return this.characterHave.getHealItemdurability();
+    }
+
+    void openItemBag(){
+        this.characterHaveJFrame.openItemBag();
     }
 
     ItemInfo getItemInfo(int bagNumber){

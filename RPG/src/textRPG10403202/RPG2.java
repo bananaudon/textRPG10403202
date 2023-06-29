@@ -21,7 +21,7 @@ public class RPG2 extends JFrame implements ActionListener {
 	static final Hero mainCharacter = new Hero(1,100,100,5,100,0,1,0);
 
 	// static itemBag itembag = new itemBag();
-	ItemBagJFrame iBJ;
+	//ItemBagJFrame iBJ;
 	static EventList Event = new EventList();
 
 	GameManager gameManager = new GameManager();
@@ -52,7 +52,7 @@ public class RPG2 extends JFrame implements ActionListener {
 	static int[] EnemyStatus = Enemy(0);
 
 	RPG2(String title) {
-		iBJ = new ItemBagJFrame(mainCharacter);
+		//iBJ = new ItemBagJFrame(mainCharacter);
 		setTitle(title);
 
 		log.setLineWrap(true);
@@ -136,7 +136,7 @@ public class RPG2 extends JFrame implements ActionListener {
 				log.append("攻撃はむなしく空ぶった\n");
 			}
 		} else if (e.getSource() == itemBag) {
-			iBJ.openItemBag();
+			mainCharacter.openItemBag();
 		}
 		refresh();
 	}
