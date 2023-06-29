@@ -64,7 +64,6 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 
 		if (e.getSource() == selectedUp) {
 			selectedBagNumber--;
-			System.out.println(selectedBagNumber);
 		} else if (e.getSource() == selectedDown) {
 			selectedBagNumber++;
 		} else if (e.getSource() == useItem) {
