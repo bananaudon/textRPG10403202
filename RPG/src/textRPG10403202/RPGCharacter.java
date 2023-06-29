@@ -25,24 +25,12 @@ public abstract class RPGCharacter {
         this.characterHave.useHealItem();
     }
 
-    void useItem(int bagNumber){
-        this.characterHave.useItem(bagNumber);
-    }
-
     void gotItem(Item item){
         this.characterHave.addItem(item);
     }
 
     void setHeal(int bagNumber){
         this.characterHave.setHealItem(bagNumber);
-    }
-
-    String[] getItemNames(){
-        return this.characterHave.getItemNames();
-    }
-
-    int getHealItemdurability(){
-        return this.characterHave.getHealItemdurability();
     }
 
     void openItemBag(){
@@ -52,6 +40,11 @@ public abstract class RPGCharacter {
     ItemInfo getItemInfo(int bagNumber){
         return this.characterHave.getItemInfo(bagNumber);
     }
+
+    ItemInfo getHealItemInfo(){
+        return this.characterHave.getHealItemInfo();
+    }
+    
     public void randomStatus(int minLv, int minMaxHP, int minNowHP, int minPow, int LRange, int MHRange, int NHRange,
             int PRange) {
         lv = (int) (Math.random() * (LRange + 1)) + minLv;

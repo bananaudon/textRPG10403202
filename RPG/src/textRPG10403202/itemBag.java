@@ -66,6 +66,9 @@ public class ItemBag {
         return (ItemInfo)items[bagNumber];
     }
 
+    ItemInfo getHealItemInfo(){
+        return (ItemInfo)healItem;
+    }
     int getHealItemdurability(){
         return healItem.getdurability();
     }
