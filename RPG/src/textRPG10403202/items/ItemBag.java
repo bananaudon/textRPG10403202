@@ -38,12 +38,7 @@ public class ItemBag {
         }
     }
 
-    public void useItem(int bagNumber){
-        items[bagNumber].use(owner);
-        if(items[bagNumber].isBreak()){
-            breakItem(bagNumber);
-        }
-    }
+
     
     public void useHealItem(){
         healItem.use(owner);
@@ -52,23 +47,30 @@ public class ItemBag {
         }
     }
 
-    public String[] getItemNames(){
+    public ItemInfo getHealItemInfo(){
+        return (ItemInfo)healItem;
+    }
+
+    //ここまで
+
+    public ItemInfo getItemInfo(int bagNumber){
+        return (ItemInfo)items[bagNumber];
+    }
+
+    void useItem(int bagNumber){
+        items[bagNumber].use(owner);
+        if(items[bagNumber].isBreak()){
+            breakItem(bagNumber);
+        }
+    }
+
+    String[] getItemNames(){
         String itemNames[] = new String[items.length];
             for(int i = 0;i < items.length;i++){
                 itemNames[i] = items[i].getItemName();
             }
         return itemNames;
     }
-
-    public ItemInfo getItemInfo(int bagNumber){
-        return (ItemInfo)items[bagNumber];
-    }
-
-    public ItemInfo getHealItemInfo(){
-        return (ItemInfo)healItem;
-    }
-
-    //ここまで
 
     private void breakHealItem(){
         healItem = new Item_void();
