@@ -1,15 +1,13 @@
-package textRPG10403202;
+package textRPG10403202.items;
 
-import textRPG10403202.items.ItemInfo;
-import textRPG10403202.items.Item;
-import textRPG10403202.items.Item_void;
-import textRPG10403202.items.Heal;
+import textRPG10403202.RPG2;
+import textRPG10403202.RPGCharacter;
 
 public class ItemBag {
     private Item[] items = new Item[20];
     private Item healItem = new Item_void();
     RPGCharacter owner;
-    ItemBag(RPGCharacter character){
+    public ItemBag(RPGCharacter character){
         this.owner = character;
         this.setEmpty();
     }
@@ -17,13 +15,13 @@ public class ItemBag {
     //キャラクターが実行できるメソッド
     //ここから
 
-    void setEmpty() {
+    public void setEmpty() {
         for (int i = 0; i < items.length; i++) {
             items[i] = new Item_void();
         }
     }
 
-    void addItem(Item Item) {
+    public void addItem(Item Item) {
         for (int i = 0; i < items.length; i++) {
             if (items[i] instanceof Item_void) {
                 items[i] = Item;
@@ -33,28 +31,28 @@ public class ItemBag {
         }
     }
 
-    void setHealItem(int bagNumber) {
+    public void setHealItem(int bagNumber) {
         if (items[bagNumber] instanceof Heal) {
             healItem = items[bagNumber];
             items[bagNumber] = new Item_void();
         }
     }
 
-    void useItem(int bagNumber){
+    public void useItem(int bagNumber){
         items[bagNumber].use(owner);
         if(items[bagNumber].isBreak()){
             breakItem(bagNumber);
         }
     }
     
-    void useHealItem(){
+    public void useHealItem(){
         healItem.use(owner);
         if(healItem.isBreak()){
             breakHealItem();
         }
     }
 
-    String[] getItemNames(){
+    public String[] getItemNames(){
         String itemNames[] = new String[items.length];
             for(int i = 0;i < items.length;i++){
                 itemNames[i] = items[i].getItemName();
@@ -62,11 +60,11 @@ public class ItemBag {
         return itemNames;
     }
 
-    ItemInfo getItemInfo(int bagNumber){
+    public ItemInfo getItemInfo(int bagNumber){
         return (ItemInfo)items[bagNumber];
     }
 
-    ItemInfo getHealItemInfo(){
+    public ItemInfo getHealItemInfo(){
         return (ItemInfo)healItem;
     }
 

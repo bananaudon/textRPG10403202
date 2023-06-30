@@ -1,6 +1,8 @@
 package textRPG10403202;
 
 import textRPG10403202.items.Item;
+import textRPG10403202.items.ItemBag;
+import textRPG10403202.items.ItemBagJFrame;
 import textRPG10403202.items.ItemInfo;
 public abstract class RPGCharacter {
     public String name;

@@ -1,4 +1,4 @@
-package textRPG10403202;
+package textRPG10403202.items;
 //import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -13,8 +13,6 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-import textRPG10403202.items.Heal_Low;
-
 public class ItemBagJFrame extends JFrame implements ActionListener {
 	private ItemBag OpenBag;
 	private JTextField[] itemtxt = new JTextField[20];
@@ -23,7 +21,7 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 	private JButton useItem = new JButton("使う");
 	private int selectedBagNumber = 0;
 
-	ItemBagJFrame(ItemBag itembag) {
+	public ItemBagJFrame(ItemBag itembag) {
 		OpenBag = itembag;
 		System.out.println("ItemBagJFrameのコンストラクタでアイテムを追加します、動作確認用");
 		OpenBag.addItem(new Heal_Low(40));
@@ -73,7 +71,7 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 		selectedItem();
 	}
 
-	void selectedItem() {
+	public void selectedItem() {
 
 		if (selectedBagNumber < 0) {
 			selectedBagNumber = itemtxt.length - 1;
@@ -89,7 +87,7 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 		itemtxt[selectedBagNumber].setText(OpenBag.getItemInfo(selectedBagNumber).getItemName());
 	}
 
-	void openItemBag() {
+	public void openItemBag() {
 		setVisible(true);
 	}
 }
