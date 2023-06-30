@@ -53,7 +53,11 @@ public class ItemBag {
 
     //ここまで
 
-    public ItemInfo getItemInfo(int bagNumber){
+    int getItemLength(){
+        return this.items.length;
+    }
+    
+    ItemInfo getItemInfo(int bagNumber){
         return (ItemInfo)items[bagNumber];
     }
 

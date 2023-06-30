@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 
 public class ItemBagJFrame extends JFrame implements ActionListener {
 	private ItemBag OpenBag;
-	private JTextField[] itemtxt = new JTextField[20];
+	private JTextField[] itemtxt;
 	private JButton selectedUp = new JButton("↑");
 	private JButton selectedDown = new JButton("↓");
 	private JButton useItem = new JButton("使う");
@@ -23,6 +23,7 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 
 	public ItemBagJFrame(ItemBag itembag) {
 		OpenBag = itembag;
+		itemtxt = new JTextField[OpenBag.getItemLength()];
 		System.out.println("ItemBagJFrameのコンストラクタでアイテムを追加します、動作確認用");
 		OpenBag.addItem(new Heal_Low(40));
 		OpenBag.setHealItem(0);
