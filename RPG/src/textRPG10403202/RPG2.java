@@ -18,7 +18,7 @@ import javax.swing.BoxLayout;
 public class RPG2 extends JFrame implements ActionListener {
 
 	//mainCharacterがHeroじゃなくなるようなことがあればfinalを外す
-	private static final Hero mainCharacter = new Hero(1,100,100,5,100,0,1,0);
+	private static Hero mainCharacter;
 
 	private EventList Event = new EventList(this);
 
@@ -47,6 +47,7 @@ public class RPG2 extends JFrame implements ActionListener {
 	private int[] EnemyStatus = Enemy(0);
 
 	private RPG2(String title) {
+		mainCharacter = new Hero(1,100,100,5,this,100,0,1,0);
 		Event.executeEvent(Event.selectEvent(30));
 		//iBJ = new ItemBagJFrame(mainCharacter);
 		setTitle(title);

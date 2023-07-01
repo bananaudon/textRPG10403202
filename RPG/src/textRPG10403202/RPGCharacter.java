@@ -12,13 +12,15 @@ public abstract class RPGCharacter {
     public int maxHP;
     public int nowHP;
     public int Pow;
+    private RPG2 mainClass;
     private ItemBag characterHave;
     private ItemBagJFrame characterHaveJFrame;
-    RPGCharacter(int level, int maxHP, int currentHP, int power) {
+    RPGCharacter(int level, int maxHP, int currentHP, int power, RPG2 setMainClass) {
         this.lv = level;
         this.maxHP = maxHP;
         this.nowHP = currentHP;
         this.Pow = power;
+        this.mainClass = setMainClass;
         this.characterHave = new ItemBag(this);
         this.characterHaveJFrame = new ItemBagJFrame(characterHave);
     }

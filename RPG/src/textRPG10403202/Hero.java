@@ -2,9 +2,9 @@ package textRPG10403202;
 public class Hero extends RPGCharacter {
     int nextLv, EXP, steps, luck;
 
-    Hero(int level, int maxHP, int currentHP, int power,int nL, int E, int s, int lu){
+    Hero(int level, int maxHP, int currentHP, int power, RPG2 setMainClass,int nL, int E, int s, int lu){
         //characterとして必要な情報
-        super(level,maxHP,currentHP,power);
+        super(level,maxHP,currentHP,power,setMainClass);
 
         //主人公として必要な情報
         this.nextLv = nL;
