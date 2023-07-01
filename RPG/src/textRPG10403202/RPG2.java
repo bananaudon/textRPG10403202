@@ -30,7 +30,6 @@ public class RPG2 extends JFrame implements ActionListener {
 		new RPG2("RPG");
 	}
 	private String EnemyName = "";
-	private boolean fight = false;
 	private int pos = 1;
 	private int risk = 100;
 	private JTextField Lvtxt;
@@ -137,13 +136,12 @@ public class RPG2 extends JFrame implements ActionListener {
 		}
 
 		else if (e.getSource() == Attack) {
-			if (fight) {
+			if (GameManager.isPossibleAttack(getActiveGameState())) {
 				EnemyStatus[2] -= mainCharacter.Pow;
 				log.append(EnemyName + "に" + mainCharacter.Pow + "のダメージ\n");
 				if (EnemyStatus[2] <= 0) {
 					log.append(EnemyName + "を倒した\n");
 					mainCharacter.nextLv -= EnemyStatus[0] * 5;
-					fight = false;
 				} else {
 					Damage(0);
 				}
@@ -159,7 +157,6 @@ public class RPG2 extends JFrame implements ActionListener {
 	}
 
 	public void battle(int EnemyTag) {
-		fight = true;
 		EnemyStatus = Enemy(EnemyTag);
 		logWrite(EnemyName);
 	}
