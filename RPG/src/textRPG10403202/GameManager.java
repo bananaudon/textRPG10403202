@@ -3,7 +3,7 @@ public class GameManager {
     
     private GameState activeGameState = GameState.EXPLORE;
 
-    GameState getActiveGameState(){
+    GameState getStatus(){
         return this.activeGameState;
     }
 

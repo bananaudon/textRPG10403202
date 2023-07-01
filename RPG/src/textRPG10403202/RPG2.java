@@ -113,7 +113,7 @@ public class RPG2 extends JFrame implements ActionListener {
 
 	void walk(int steps) {
 
-		if (fight) {
+		if (GameManager.isPossibleACT(getActiveGameState())) {
 			log.append("敵がいて前に進めそうにない\n");
 		} else {
 			log.append("area" + pos + "→" + "area" + (pos + 1) + "に進んだ(" + steps + ")\n");
@@ -130,7 +130,7 @@ public class RPG2 extends JFrame implements ActionListener {
 		if (e.getSource() == next) {
 			walk(1);
 		}
-		
+
 		else if (e.getSource() == heal) {
 			mainCharacter.useHealItem();
 		}
@@ -224,7 +224,7 @@ public class RPG2 extends JFrame implements ActionListener {
 	}
 
 	public GameState getActiveGameState(){
-		return gameManager.getActiveGameState();
+		return gameManager.getStatus();
 	}
 
 	public static void logWrite(String MAIN) {
