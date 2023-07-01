@@ -9,18 +9,23 @@ public abstract class Heal{
         this.durabilityLossPerUse = dl;
         this.itemName = n;
     }
+
     public String getItemName(){
         return this.itemName;
     }
+
     public void Rename(String name){
         this.itemName = name;
     }
+
     public int getdurability(){
         return this.durability;
     }
+
     public void decrementdurability(){
         this.durability -= durabilityLossPerUse;
     }
+    
     public boolean isBreak(){
         if(this.durability <= 0){
             return true;

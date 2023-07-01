@@ -19,8 +19,12 @@ public class Heal_Low extends Heal implements Item{
         RPG2.logWrite((HL.fixedHeal + percentageHeal) + "回復した");
     }
     public void use(RPGCharacter target){
-        RPG2.logWrite(this.getItemName() + "を使った");
-        applyEffect(target,this);
-        decrementdurability();
+        if(target.isPossibleACT()){
+            RPG2.logWrite(this.getItemName() + "を使った");
+            applyEffect(target,this);
+            decrementdurability();
+        }else{
+            RPG2.logWrite("現在アイテムを使用できません");
+        }
     }
 }
