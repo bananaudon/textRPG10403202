@@ -24,11 +24,6 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 	public ItemBagJFrame(ItemBag itembag) {
 		OpenBag = itembag;
 		itemtxt = new JTextField[OpenBag.getItemLength()];
-		System.out.println("ItemBagJFrameのコンストラクタでアイテムを追加します、動作確認用");
-		OpenBag.addItem(new Heal_Low(40));
-		OpenBag.setHealItem(0);
-		OpenBag.addItem(new Heal_Low(40));
-		OpenBag.addItem(new Heal_Low(40));
 
 		JPanel bwjpC = new JPanel();
 		JPanel bwjpE = new JPanel();

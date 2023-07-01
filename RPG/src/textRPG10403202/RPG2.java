@@ -9,6 +9,9 @@ import java.awt.BorderLayout;
 //import javax.swing.*
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+
+import textRPG10403202.items.Heal_Low;
+
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -48,6 +51,13 @@ public class RPG2 extends JFrame implements ActionListener {
 
 	private RPG2(String title) {
 		mainCharacter = new Hero(1,100,100,5,this,100,0,1,0);
+		System.out.println("RPG2のコンストラクタでアイテムを追加します、動作確認用");
+
+		mainCharacter.gotItem(new Heal_Low(40,this));
+		mainCharacter.setHeal(0);
+		mainCharacter.gotItem(new Heal_Low(40,this));
+		mainCharacter.gotItem(new Heal_Low(40,this));
+		
 		HPtxt = new JTextField("HP" + mainCharacter.maxHP + "/" + mainCharacter.nowHP);
 		Powtxt = new JTextField("Power" + mainCharacter.Pow);
 		Lvtxt = new JTextField("Lv." + mainCharacter.lv + "(" + mainCharacter.nextLv + ")");
@@ -210,7 +220,7 @@ public class RPG2 extends JFrame implements ActionListener {
 	public GameState getActiveGameState(){
 		return gameManager.getActiveGameState();
 	}
-	
+
 	public static void logWrite(String MAIN) {
 		MAIN += "\n";
 		log.append(MAIN);

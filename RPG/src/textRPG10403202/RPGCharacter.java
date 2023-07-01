@@ -30,6 +30,11 @@ public abstract class RPGCharacter {
         mainClass.nextGameState();
     }
 
+    public void setHeal(int bagNumber){
+        this.characterHave.setHealItem(bagNumber);
+        mainClass.nextGameState();
+    }
+
     public void gotItem(Item item){
         this.characterHave.addItem(item);
     }

@@ -1,13 +1,16 @@
 package textRPG10403202.items;
 
+import textRPG10403202.RPG2;
 public abstract class Heal{
     private String itemName;
     private int durability,durabilityLossPerUse;
+    private RPG2 mainClass;
     protected int fixedHeal;
-    Heal(String n,int d,int dl){
+    Heal(String n,int d,int dl,RPG2 setMainClass){
         this.durability = d;
         this.durabilityLossPerUse = dl;
         this.itemName = n;
+        this.mainClass = setMainClass;
     }
 
     public String getItemName(){
