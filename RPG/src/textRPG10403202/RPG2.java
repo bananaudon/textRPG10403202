@@ -30,9 +30,9 @@ public class RPG2 extends JFrame implements ActionListener {
 	private boolean fight = false;
 	private int pos = 1;
 	private int risk = 100;
-	private JTextField Lvtxt = new JTextField("Lv." + mainCharacter.lv + "(" + mainCharacter.nextLv + ")");
-	private JTextField HPtxt = new JTextField("HP" + mainCharacter.maxHP + "/" + mainCharacter.nowHP);
-	private JTextField Powtxt = new JTextField("Power" + mainCharacter.Pow);
+	private JTextField Lvtxt;
+	private JTextField HPtxt;
+	private JTextField Powtxt;
 	private static JTextArea log = new JTextArea(5, 20);
 	private JScrollPane scroll = new JScrollPane(log,
 			JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
@@ -48,6 +48,9 @@ public class RPG2 extends JFrame implements ActionListener {
 
 	private RPG2(String title) {
 		mainCharacter = new Hero(1,100,100,5,this,100,0,1,0);
+		HPtxt = new JTextField("HP" + mainCharacter.maxHP + "/" + mainCharacter.nowHP);
+		Powtxt = new JTextField("Power" + mainCharacter.Pow);
+		Lvtxt = new JTextField("Lv." + mainCharacter.lv + "(" + mainCharacter.nextLv + ")");
 		Event.executeEvent(Event.selectEvent(30));
 		//iBJ = new ItemBagJFrame(mainCharacter);
 		setTitle(title);
@@ -199,6 +202,15 @@ public class RPG2 extends JFrame implements ActionListener {
 		HPtxt.setText("HP" + mainCharacter.nowHP + "/" + mainCharacter.maxHP);
 		Lvtxt.setText("Lv." + mainCharacter.lv + "(" + mainCharacter.nextLv + ")");
 	}
+
+	public void nextGameState(){
+		gameManager.nextStatus();
+	}
+
+	public GameState getActiveGameState(){
+		return gameManager.getActiveGameState();
+	}
+	
 	public static void logWrite(String MAIN) {
 		MAIN += "\n";
 		log.append(MAIN);

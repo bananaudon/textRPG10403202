@@ -26,7 +26,10 @@ public abstract class RPGCharacter {
     }
 
     void useHealItem(){
-        this.characterHave.useHealItem();
+        if(GameManager.isPossibleACT(mainClass.getActiveGameState())){
+            this.characterHave.useHealItem();
+            mainClass.nextGameState();
+        }
     }
 
     void gotItem(Item item){

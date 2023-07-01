@@ -48,4 +48,25 @@ public class GameManager {
             }
         }
     }
+
+    public static boolean isPossibleACT(GameState checkState){
+        switch(checkState){
+            case EXPLORE:
+            case ACT:
+            case BATTLE:
+            case SELECT:
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    public static boolean isPossibleAttack(GameState checkState){
+        switch(checkState){
+            case BATTLE:
+                return true;
+            default:
+                return false;
+        }
+    }
 }
