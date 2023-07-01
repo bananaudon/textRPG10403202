@@ -1,8 +1,9 @@
 package textRPG10403202;
 public class EventList {
     Event[] events = new Event[4];
-
-    EventList() {
+    private RPG2 mainClass;
+    EventList(RPG2 setMainClass) {
+        mainClass = setMainClass;
         for (int i = 0; i < events.length; i++)
             events[i] = new Event();
         events[0] = new Event(40, 0, 0);
@@ -11,7 +12,7 @@ public class EventList {
         events[3] = new Event(90, 1, 1);
     }
 
-    public Event selectEvent(int randomRange) {
+    Event selectEvent(int randomRange) {
         int randomNumber = (int) (Math.random() * randomRange);
         for (int i = 0; i < events.length; i++) {
             if (randomNumber <= events[i].probability) {
@@ -21,7 +22,7 @@ public class EventList {
         return new Event();
     }
 
-    public void executeEvent(Event exeEvent) {
+    void executeEvent(Event exeEvent) {
 
         String EventMessage = switch (exeEvent.eventType) {
 
@@ -36,7 +37,7 @@ public class EventList {
                 };
             }
             case 1 -> {
-                RPG2.battle(exeEvent.eventPower);
+                mainClass.battle(exeEvent.eventPower);
                 yield "";
             }
             case 2 -> {

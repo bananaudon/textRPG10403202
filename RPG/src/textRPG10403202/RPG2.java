@@ -22,23 +22,22 @@ public class RPG2 extends JFrame implements ActionListener {
 
 	// static itemBag itembag = new itemBag();
 	//ItemBagJFrame iBJ;
-	static EventList Event = new EventList();
+	EventList Event = new EventList(this);
 
 	GameManager gameManager = new GameManager();
 	public static void main(String args[]) {
 		//refresh();
-		Event.executeEvent(Event.selectEvent(30));
 		new RPG2("RPG");
 	}
-	static String EnemyName = "";
-	static boolean fight = false;
-	static boolean turn = false;
-	static int pos = 1;
-	static int risk = 100;
-	static JTextField Lvtxt = new JTextField("Lv." + mainCharacter.lv + "(" + mainCharacter.nextLv + ")");
-	static JTextField HPtxt = new JTextField("HP" + mainCharacter.maxHP + "/" + mainCharacter.nowHP);
-	static JTextField Powtxt = new JTextField("Power" + mainCharacter.Pow);
-	public static JTextArea log = new JTextArea(5, 20);
+	String EnemyName = "";
+	boolean fight = false;
+	boolean turn = false;
+	int pos = 1;
+	int risk = 100;
+	JTextField Lvtxt = new JTextField("Lv." + mainCharacter.lv + "(" + mainCharacter.nextLv + ")");
+	JTextField HPtxt = new JTextField("HP" + mainCharacter.maxHP + "/" + mainCharacter.nowHP);
+	JTextField Powtxt = new JTextField("Power" + mainCharacter.Pow);
+	private static JTextArea log = new JTextArea(5, 20);
 	JScrollPane scroll = new JScrollPane(log,
 			JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 			JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -49,9 +48,10 @@ public class RPG2 extends JFrame implements ActionListener {
 	JButton Attack = new JButton("攻撃");
 	JButton charge = new JButton("ためる");
 	JButton itemBag = new JButton("アイテム");
-	static int[] EnemyStatus = Enemy(0);
+	int[] EnemyStatus = Enemy(0);
 
 	private RPG2(String title) {
+		Event.executeEvent(Event.selectEvent(30));
 		//iBJ = new ItemBagJFrame(mainCharacter);
 		setTitle(title);
 
@@ -101,7 +101,7 @@ public class RPG2 extends JFrame implements ActionListener {
 		refresh();
 	}
 
-	public static void walk(int steps) {
+	void walk(int steps) {
 
 		if (fight) {
 			log.append("敵がいて前に進めそうにない\n");
@@ -141,13 +141,13 @@ public class RPG2 extends JFrame implements ActionListener {
 		refresh();
 	}
 
-	public static void battle(int EnemyTag) {
+	public void battle(int EnemyTag) {
 		fight = true;
 		EnemyStatus = Enemy(EnemyTag);
 		logWrite(EnemyName);
 	}
 
-	public static int[] Enemy(int tag) {
+	public int[] Enemy(int tag) {
 		int LvRange = 0, PowRange = 0, HPRange = 0;
 		int addLv = 0, addPow = 0, addHP = 0;
 		double Rand = Math.random();
@@ -180,7 +180,7 @@ public class RPG2 extends JFrame implements ActionListener {
 		return new int[] { 1, 12, 12, 3 };
 	}
 
-	public static void Damage(int damagetype) {
+	public void Damage(int damagetype) {
 		switch (damagetype) {
 			case 0:
 				mainCharacter.damage(EnemyStatus[3]);
@@ -193,7 +193,7 @@ public class RPG2 extends JFrame implements ActionListener {
 			System.exit(1);
 		}
 	}
-	public static void refresh() {
+	public void refresh() {
 		if (mainCharacter.nowHP > mainCharacter.maxHP) {
 			mainCharacter.nowHP = mainCharacter.maxHP;
 		}
