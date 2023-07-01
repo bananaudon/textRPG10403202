@@ -32,15 +32,15 @@ public abstract class RPGCharacter {
         }
     }
 
-    void gotItem(Item item){
+    public void gotItem(Item item){
         this.characterHave.addItem(item);
     }
 
-    void openItemBag(){
+    public void openItemBag(){
         this.characterHaveJFrame.openItemBag();
     }
 
-    ItemInfo getHealItemInfo(){
+    public ItemInfo getHealItemInfo(){
         return this.characterHave.getHealItemInfo();
     }
     
