@@ -117,8 +117,8 @@ public class RPG2 extends JFrame implements ActionListener {
 			log.append("area" + pos + "→" + "area" + (pos + 1) + "に進んだ(" + steps + ")\n");
 			pos += steps;
 			risk += steps;
+			this.nextGameState();
 			Event.executeEvent(Event.selectEvent(risk));
-			this.gameManager.nextStatus();
 		} else {
 			log.append("今はできない\n");
 		}
@@ -136,14 +136,15 @@ public class RPG2 extends JFrame implements ActionListener {
 		}
 
 		else if (e.getSource() == Attack) {
-			if (GameManager.isPossibleAttack(getActiveGameState())) {
+			System.out.println(gameManager.getStatus());
+			if (GameManager.isPossibleAttack(gameManager.getStatus())) {
 				EnemyStatus[2] -= mainCharacter.Pow;
 				log.append(EnemyName + "に" + mainCharacter.Pow + "のダメージ\n");
+				nextGameState();
 				if (EnemyStatus[2] <= 0) {
 					log.append(EnemyName + "を倒した\n");
 					mainCharacter.nextLv -= EnemyStatus[0] * 5;
-				} else {
-					Damage(0);
+					gameManager.setStatus(GameState.EXPLORE);
 				}
 			} else {
 				log.append("攻撃はむなしく空ぶった\n");
@@ -158,6 +159,7 @@ public class RPG2 extends JFrame implements ActionListener {
 
 	public void battle(int EnemyTag) {
 		EnemyStatus = Enemy(EnemyTag);
+		gameManager.setStatus(GameState.BATTLE);
 		logWrite(EnemyName);
 	}
 
@@ -204,7 +206,7 @@ public class RPG2 extends JFrame implements ActionListener {
 		}
 		if (mainCharacter.nowHP <= 0) {
 			log.append("死んだ\n");
-			System.exit(1);
+			System.exit(0);
 		}
 	}
 	public void refresh() {
@@ -219,6 +221,15 @@ public class RPG2 extends JFrame implements ActionListener {
 
 	public void nextGameState(){
 		gameManager.nextStatus();
+		switch(gameManager.getStatus()){
+			case BATTLE_ENEMY -> {
+				Damage(0);
+				gameManager.nextStatus();
+			}
+			default -> {
+
+			}
+		}
 	}
 
 	public GameState getActiveGameState(){
