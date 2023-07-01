@@ -1,6 +1,6 @@
 package textRPG10403202;
 public class EventList {
-    Event[] events = new Event[4];
+    private Event[] events = new Event[4];
     private RPG2 mainClass;
     EventList(RPG2 setMainClass) {
         mainClass = setMainClass;
