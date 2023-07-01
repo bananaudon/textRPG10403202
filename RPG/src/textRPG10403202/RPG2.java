@@ -29,14 +29,13 @@ public class RPG2 extends JFrame implements ActionListener {
 		//refresh();
 		new RPG2("RPG");
 	}
-	String EnemyName = "";
-	boolean fight = false;
-	boolean turn = false;
-	int pos = 1;
-	int risk = 100;
-	JTextField Lvtxt = new JTextField("Lv." + mainCharacter.lv + "(" + mainCharacter.nextLv + ")");
-	JTextField HPtxt = new JTextField("HP" + mainCharacter.maxHP + "/" + mainCharacter.nowHP);
-	JTextField Powtxt = new JTextField("Power" + mainCharacter.Pow);
+	private String EnemyName = "";
+	private boolean fight = false;
+	private int pos = 1;
+	private int risk = 100;
+	private JTextField Lvtxt = new JTextField("Lv." + mainCharacter.lv + "(" + mainCharacter.nextLv + ")");
+	private JTextField HPtxt = new JTextField("HP" + mainCharacter.maxHP + "/" + mainCharacter.nowHP);
+	private JTextField Powtxt = new JTextField("Power" + mainCharacter.Pow);
 	private static JTextArea log = new JTextArea(5, 20);
 	JScrollPane scroll = new JScrollPane(log,
 			JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
