@@ -22,9 +22,9 @@ public class RPG2 extends JFrame implements ActionListener {
 
 	// static itemBag itembag = new itemBag();
 	//ItemBagJFrame iBJ;
-	EventList Event = new EventList(this);
+	private EventList Event = new EventList(this);
 
-	GameManager gameManager = new GameManager();
+	private GameManager gameManager = new GameManager();
 	public static void main(String args[]) {
 		//refresh();
 		new RPG2("RPG");
@@ -37,17 +37,17 @@ public class RPG2 extends JFrame implements ActionListener {
 	private JTextField HPtxt = new JTextField("HP" + mainCharacter.maxHP + "/" + mainCharacter.nowHP);
 	private JTextField Powtxt = new JTextField("Power" + mainCharacter.Pow);
 	private static JTextArea log = new JTextArea(5, 20);
-	JScrollPane scroll = new JScrollPane(log,
+	private JScrollPane scroll = new JScrollPane(log,
 			JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 			JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-	JButton next = new JButton("前に進む");
+	private JButton next = new JButton("前に進む");
 	static JButton heal;
-	JButton GiveUp = new JButton("あきらめる");
-	JButton Attack = new JButton("攻撃");
-	JButton charge = new JButton("ためる");
-	JButton itemBag = new JButton("アイテム");
-	int[] EnemyStatus = Enemy(0);
+	private JButton GiveUp = new JButton("あきらめる");
+	private JButton Attack = new JButton("攻撃");
+	private JButton charge = new JButton("ためる");
+	private JButton itemBag = new JButton("アイテム");
+	private int[] EnemyStatus = Enemy(0);
 
 	private RPG2(String title) {
 		Event.executeEvent(Event.selectEvent(30));
