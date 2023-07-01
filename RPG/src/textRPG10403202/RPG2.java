@@ -18,7 +18,7 @@ import javax.swing.BoxLayout;
 public class RPG2 extends JFrame implements ActionListener {
 
 	//mainCharacterがHeroじゃなくなるようなことがあればfinalを外す
-	privatestatic final Hero mainCharacter = new Hero(1,100,100,5,100,0,1,0);
+	private static final Hero mainCharacter = new Hero(1,100,100,5,100,0,1,0);
 
 	private EventList Event = new EventList(this);
 
