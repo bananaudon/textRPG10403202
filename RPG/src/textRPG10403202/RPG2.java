@@ -129,9 +129,13 @@ public class RPG2 extends JFrame implements ActionListener {
 
 		if (e.getSource() == next) {
 			walk(1);
-		} else if (e.getSource() == heal) {
+		}
+		
+		else if (e.getSource() == heal) {
 			mainCharacter.useHealItem();
-		} else if (e.getSource() == Attack) {
+		}
+
+		else if (e.getSource() == Attack) {
 			if (fight) {
 				EnemyStatus[2] -= mainCharacter.Pow;
 				log.append(EnemyName + "に" + mainCharacter.Pow + "のダメージ\n");
@@ -145,7 +149,9 @@ public class RPG2 extends JFrame implements ActionListener {
 			} else {
 				log.append("攻撃はむなしく空ぶった\n");
 			}
-		} else if (e.getSource() == itemBag) {
+		}
+
+		else if (e.getSource() == itemBag) {
 			mainCharacter.openItemBag();
 		}
 		refresh();
