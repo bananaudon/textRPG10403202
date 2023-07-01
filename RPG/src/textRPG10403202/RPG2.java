@@ -51,7 +51,7 @@ public class RPG2 extends JFrame implements ActionListener {
 	JButton itemBag = new JButton("アイテム");
 	static int[] EnemyStatus = Enemy(0);
 
-	RPG2(String title) {
+	private RPG2(String title) {
 		//iBJ = new ItemBagJFrame(mainCharacter);
 		setTitle(title);
 
