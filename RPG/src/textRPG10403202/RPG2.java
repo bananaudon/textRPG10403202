@@ -18,15 +18,12 @@ import javax.swing.BoxLayout;
 public class RPG2 extends JFrame implements ActionListener {
 
 	//mainCharacterがHeroじゃなくなるようなことがあればfinalを外す
-	private static final Hero mainCharacter = new Hero(1,100,100,5,100,0,1,0);
+	privatestatic final Hero mainCharacter = new Hero(1,100,100,5,100,0,1,0);
 
-	// static itemBag itembag = new itemBag();
-	//ItemBagJFrame iBJ;
 	private EventList Event = new EventList(this);
 
 	private GameManager gameManager = new GameManager();
 	public static void main(String args[]) {
-		//refresh();
 		new RPG2("RPG");
 	}
 	private String EnemyName = "";
