@@ -113,16 +113,17 @@ public class RPG2 extends JFrame implements ActionListener {
 
 	void walk(int steps) {
 
+		//switch式でゲームステータスごとに固有のメッセージを表示するかも
 		if (gameManager.getStatus() == GameState.EXPLORE) {
 			log.append("area" + pos + "→" + "area" + (pos + 1) + "に進んだ(" + steps + ")\n");
 			pos += steps;
+			risk += steps;
 			Event.executeEvent(Event.selectEvent(risk));
 			this.gameManager.nextStatus();
 		} else {
 			log.append("今はできない\n");
 		}
 
-		risk += steps;
 	}
 
 	public void actionPerformed(ActionEvent e) {
