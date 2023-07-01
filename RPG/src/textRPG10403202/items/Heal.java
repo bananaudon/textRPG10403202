@@ -30,14 +30,14 @@ public abstract class Heal{
         this.durability -= durabilityLossPerUse;
     }
     
-    boolean isItemUsable(){
+    protected boolean isItemUsable(){
         return GameManager.isPossibleACT(mainClass.getActiveGameState());
     }
     
-    void nextGameState(){
+    protected void nextGameState(){
         mainClass.nextGameState();
     }
-    
+
     public boolean isBreak(){
         if(this.durability <= 0){
             return true;
