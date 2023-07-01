@@ -23,6 +23,7 @@ public class Heal_Low extends Heal implements Item{
             RPG2.logWrite(this.getItemName() + "を使った");
             applyEffect(target,this);
             decrementdurability();
+            nextGameState();
         }else{
             RPG2.logWrite("現在アイテムを使用できません");
         }
