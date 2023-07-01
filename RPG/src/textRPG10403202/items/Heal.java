@@ -34,6 +34,10 @@ public abstract class Heal{
         return GameManager.isPossibleACT(mainClass.getActiveGameState());
     }
     
+    void nextGameState(){
+        mainClass.nextGameState();
+    }
+    
     public boolean isBreak(){
         if(this.durability <= 0){
             return true;
