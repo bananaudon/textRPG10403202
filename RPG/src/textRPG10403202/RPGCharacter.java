@@ -25,7 +25,7 @@ public abstract class RPGCharacter {
         this.characterHaveJFrame = new ItemBagJFrame(characterHave);
     }
 
-    void useHealItem(){
+    public void useHealItem(){
         if(GameManager.isPossibleACT(mainClass.getActiveGameState())){
             this.characterHave.useHealItem();
             mainClass.nextGameState();
