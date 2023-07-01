@@ -61,11 +61,4 @@ public abstract class RPGCharacter {
 
     public abstract void heal(int heal);
 
-    public boolean isPossibleACT(){
-        return GameManager.isPossibleACT(this.mainClass.getActiveGameState());
-    }
-
-    public boolean isPossibleAttack(){
-        return GameManager.isPossibleAttack(this.mainClass.getActiveGameState());
-    }
 }

@@ -1,6 +1,7 @@
 package textRPG10403202.items;
 
 import textRPG10403202.RPG2;
+import textRPG10403202.GameManager;
 public abstract class Heal{
     private String itemName;
     private int durability,durabilityLossPerUse;
@@ -27,6 +28,10 @@ public abstract class Heal{
 
     public void decrementdurability(){
         this.durability -= durabilityLossPerUse;
+    }
+    
+    boolean isItemUsable(){
+        return GameManager.isPossibleACT(mainClass.getActiveGameState());
     }
     
     public boolean isBreak(){
