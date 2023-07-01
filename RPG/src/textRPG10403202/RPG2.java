@@ -113,7 +113,7 @@ public class RPG2 extends JFrame implements ActionListener {
 
 	void walk(int steps) {
 
-		if (GameManager.isPossibleACT(getActiveGameState())) {
+		if (gameManager.getStatus() == GameState.EXPLORE) {
 			log.append("area" + pos + "→" + "area" + (pos + 1) + "に進んだ(" + steps + ")\n");
 			pos += steps;
 			Event.executeEvent(Event.selectEvent(risk));
