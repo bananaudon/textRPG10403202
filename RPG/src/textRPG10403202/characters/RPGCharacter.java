@@ -1,4 +1,4 @@
-package textRPG10403202;
+package textRPG10403202.characters;
 
 public abstract class RPGCharacter {
     public String name;
@@ -8,7 +8,7 @@ public abstract class RPGCharacter {
     public int maxHP;
     public int nowHP;
     public int Pow;
-    RPGCharacter(int level, int maxHP, int currentHP, int power) {
+    public RPGCharacter(int level, int maxHP, int currentHP, int power) {
         this.lv = level;
         this.maxHP = maxHP;
         this.nowHP = currentHP;

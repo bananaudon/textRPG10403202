@@ -1,16 +1,17 @@
-package textRPG10403202;
+package textRPG10403202.characters;
 
+import textRPG10403202.RPG2;
 import textRPG10403202.items.Item;
 import textRPG10403202.items.ItemBag;
 import textRPG10403202.items.ItemBagJFrame;
 import textRPG10403202.items.ItemInfo;
 
 public class Explorer extends RPGCharacter {
-    int nextLv, EXP, steps, luck;
+    public int nextLv, EXP, steps, luck;
     private ItemBag characterHave;
     private ItemBagJFrame characterHaveJFrame;
     private RPG2 mainClass;
-    Explorer(int level, int maxHP, int currentHP, int power, RPG2 setMainClass,int nL, int E, int s, int lu){
+    public Explorer(int level, int maxHP, int currentHP, int power, RPG2 setMainClass,int nL, int E, int s, int lu){
         //characterとして必要な情報
         super(level,maxHP,currentHP,power);
 
@@ -45,7 +46,7 @@ public class Explorer extends RPGCharacter {
     public ItemInfo getHealItemInfo(){
         return this.characterHave.getHealItemInfo();
     }
-    
+
     @Override
     void attack(RPGCharacter c) {
         System.out.println(this.name + "は" + c.name + "を攻撃した");
