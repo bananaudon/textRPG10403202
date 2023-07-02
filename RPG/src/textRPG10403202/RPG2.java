@@ -25,7 +25,7 @@ public class RPG2 extends JFrame implements ActionListener {
 
 	private EventList Event = new EventList(this);
 
-	private GameManager gameManager = new GameManager();
+	private GameManager gameManager = new GameManager(this);
 	public static void main(String args[]) {
 		new RPG2("RPG");
 	}

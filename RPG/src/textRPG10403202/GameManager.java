@@ -2,6 +2,11 @@ package textRPG10403202;
 public class GameManager {
     
     private GameState activeGameState = GameState.EXPLORE;
+    private RPG2 mainClass;
+    
+    GameManager(RPG2 setmainClass){
+        mainClass = setmainClass;
+    }
 
     GameState getStatus(){
         return this.activeGameState;
