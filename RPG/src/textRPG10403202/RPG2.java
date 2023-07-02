@@ -136,7 +136,7 @@ public class RPG2 extends JFrame implements ActionListener {
 		}
 
 		else if (e.getSource() == Attack) {
-			System.out.println(gameManager.getStatus());
+			System.out.println("現在のゲームステータス:" + gameManager.getStatus() + "このメッセージはRPG2のactionPerformedから");
 			if (GameManager.isPossibleAttack(gameManager.getStatus())) {
 				EnemyStatus[2] -= mainCharacter.Pow;
 				log.append(EnemyName + "に" + mainCharacter.Pow + "のダメージ\n");
@@ -221,15 +221,6 @@ public class RPG2 extends JFrame implements ActionListener {
 
 	public void nextGameState(){
 		gameManager.nextStatus();
-		switch(gameManager.getStatus()){
-			case BATTLE_ENEMY -> {
-				Damage(0);
-				gameManager.nextStatus();
-			}
-			default -> {
-
-			}
-		}
 	}
 
 	public GameState getActiveGameState(){

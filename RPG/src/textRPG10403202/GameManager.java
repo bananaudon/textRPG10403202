@@ -3,7 +3,7 @@ public class GameManager {
     
     private GameState activeGameState = GameState.EXPLORE;
     private RPG2 mainClass;
-    
+
     GameManager(RPG2 setmainClass){
         mainClass = setmainClass;
     }
@@ -41,6 +41,8 @@ public class GameManager {
             }
             case BATTLE -> {
                 activeGameState = GameState.BATTLE_ENEMY;
+                mainClass.Damage(0);
+                activeGameState = GameState.BATTLE;
             }
             case BATTLE_ENEMY -> {
                 activeGameState = GameState.BATTLE;
