@@ -1,7 +1,7 @@
 package textRPG10403202.items;
 
 import textRPG10403202.RPG2;
-import textRPG10403202.RPGCharacter;
+import textRPG10403202.characters.RPGCharacter;
 
 public class ItemBag {
     private Item[] items = new Item[20];

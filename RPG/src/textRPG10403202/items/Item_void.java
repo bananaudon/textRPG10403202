@@ -1,6 +1,6 @@
 package textRPG10403202.items;
 
-import textRPG10403202.RPGCharacter;
+import textRPG10403202.characters.RPGCharacter;
 public class Item_void implements Item {
     public String getItemName(){
         return "none";

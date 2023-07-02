@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
+import textRPG10403202.characters.Explorer;
 import textRPG10403202.items.Heal_Low;
 
 import javax.swing.JTextArea;
