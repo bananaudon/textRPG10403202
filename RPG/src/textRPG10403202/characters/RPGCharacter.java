@@ -23,7 +23,7 @@ public abstract class RPGCharacter {
     public String getPowText(){
         return ("Power" + this.Pow);
     }
-    
+
     public void randomStatus(int minLv, int minMaxHP, int minNowHP, int minPow, int LRange, int MHRange, int NHRange,
             int PRange) {
         lv = (int) (Math.random() * (LRange + 1)) + minLv;
@@ -32,7 +32,7 @@ public abstract class RPGCharacter {
         Pow = (int) (Math.random() * (PRange + 1)) + minPow;
     }
 
-    abstract void attack(RPGCharacter c);
+    public abstract void attack(RPGCharacter c);
 
     public abstract void damage(int damage);
 

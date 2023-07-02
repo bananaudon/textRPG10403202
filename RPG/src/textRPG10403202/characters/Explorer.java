@@ -54,7 +54,7 @@ public class Explorer extends RPGCharacter {
     }
 
     @Override
-    void attack(RPGCharacter c) {
+    public void attack(RPGCharacter c) {
         System.out.println(this.name + "は" + c.name + "を攻撃した");
     }
 
