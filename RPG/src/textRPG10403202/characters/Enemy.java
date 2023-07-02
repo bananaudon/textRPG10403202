@@ -1,10 +1,9 @@
 package textRPG10403202.characters;
 
 public abstract class Enemy extends RPGCharacter{
-    String EnemyName;
     public Enemy(String setEnemyName,int setLv,int setMaxHP,int setnowHP,int setPow){
         super(setLv,setMaxHP,setnowHP,setPow);
-        EnemyName = setEnemyName;
+        name = setEnemyName;
     }
     public abstract void attack(RPGCharacter target);
     public void damage(int d){
