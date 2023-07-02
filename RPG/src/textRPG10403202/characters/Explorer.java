@@ -7,24 +7,25 @@ import textRPG10403202.items.ItemBagJFrame;
 import textRPG10403202.items.ItemInfo;
 
 public class Explorer extends RPGCharacter {
-    public int nextLv, EXP, steps, luck;
+    private int nextLv, EXP, steps, luck;
     private ItemBag characterHave;
     private ItemBagJFrame characterHaveJFrame;
     private RPG2 mainClass;
-    public Explorer(int level, int maxHP, int currentHP, int power, RPG2 setMainClass,int nL, int E, int s, int lu){
+    public Explorer(int level, int maxHP, int currentHP, int power, RPG2 setMainClass,int nL, int s, int lu){
         //characterとして必要な情報
         super(level,maxHP,currentHP,power);
 
         //主人公として必要な情報
         this.mainClass = setMainClass;
         this.nextLv = nL;
-        this.EXP = E;
+        this.EXP = 0;
         this.steps = s;
         this.luck = lu;
         this.characterHave = new ItemBag(this);
         this.characterHaveJFrame = new ItemBagJFrame(characterHave);
     }
 
+    //Item関連のメソッド
     public void useHealItem(){
         this.characterHave.useHealItem();
         mainClass.nextGameState();
@@ -47,6 +48,11 @@ public class Explorer extends RPGCharacter {
         return this.characterHave.getHealItemInfo();
     }
 
+    //UIで使用する文字列を取得
+    public String getLvText(){
+        return ("Lv." + this.lv + "(" + this.nextLv + ")");
+    }
+
     @Override
     void attack(RPGCharacter c) {
         System.out.println(this.name + "は" + c.name + "を攻撃した");
@@ -60,5 +66,14 @@ public class Explorer extends RPGCharacter {
     @Override
     public void heal(int heal) {
         this.nowHP += heal;
+    }
+    //探索者固有のメソッド
+    public void addEXP(int getEXP){
+        this.EXP += getEXP;
+        this.nextLv -= getEXP;
+        if(nextLv <= 0){
+            //レベルアップ時の処理を書く
+            //レベルアップメソッドを実装して、そこでnextLvの値を定義しなおす予定
+        }
     }
 }

@@ -50,7 +50,7 @@ public class RPG2 extends JFrame implements ActionListener {
 	private int[] EnemyStatus = Enemy(0);
 
 	private RPG2(String title) {
-		mainCharacter = new Explorer(1,100,100,5,this,100,0,1,0);
+		mainCharacter = new Explorer(1,100,100,5,this,100,1,0);
 		System.out.println("RPG2のコンストラクタでアイテムを追加します、動作確認用");
 
 		mainCharacter.gotItem(new Heal_Low(40,this));
@@ -58,9 +58,9 @@ public class RPG2 extends JFrame implements ActionListener {
 		mainCharacter.gotItem(new Heal_Low(40,this));
 		mainCharacter.gotItem(new Heal_Low(40,this));
 		
-		HPtxt = new JTextField("HP" + mainCharacter.maxHP + "/" + mainCharacter.nowHP);
-		Powtxt = new JTextField("Power" + mainCharacter.Pow);
-		Lvtxt = new JTextField("Lv." + mainCharacter.lv + "(" + mainCharacter.nextLv + ")");
+		HPtxt = new JTextField(mainCharacter.getHPText());
+		Powtxt = new JTextField(mainCharacter.getPowText());
+		Lvtxt = new JTextField();
 		Event.executeEvent(Event.selectEvent(30));
 		//iBJ = new ItemBagJFrame(mainCharacter);
 		setTitle(title);
@@ -144,7 +144,7 @@ public class RPG2 extends JFrame implements ActionListener {
 				nextGameState();
 				if (EnemyStatus[2] <= 0) {
 					log.append(EnemyName + "を倒した\n");
-					mainCharacter.nextLv -= EnemyStatus[0] * 5;
+					mainCharacter.addEXP(EnemyStatus[0] * 5);
 					gameManager.setStatus(GameState.EXPLORE);
 				}
 			} else {
@@ -214,10 +214,10 @@ public class RPG2 extends JFrame implements ActionListener {
 		if (mainCharacter.nowHP > mainCharacter.maxHP) {
 			mainCharacter.nowHP = mainCharacter.maxHP;
 		}
-		Powtxt.setText("Power" + mainCharacter.Pow);
 		heal.setText("回復耐久値:" + mainCharacter.getHealItemInfo().getdurability());
-		HPtxt.setText("HP" + mainCharacter.nowHP + "/" + mainCharacter.maxHP);
-		Lvtxt.setText("Lv." + mainCharacter.lv + "(" + mainCharacter.nextLv + ")");
+		HPtxt.setText(mainCharacter.getHPText());
+		Powtxt.setText(mainCharacter.getPowText());
+		Lvtxt.setText(mainCharacter.getLvText());
 	}
 
 	public void nextGameState(){

@@ -15,6 +15,15 @@ public abstract class RPGCharacter {
         this.Pow = power;
     }
 
+    //UIで使用する文字列を取得
+    public String getHPText(){
+        return ("HP" + this.maxHP + "/" + this.nowHP);
+    }
+
+    public String getPowText(){
+        return ("Power" + this.Pow);
+    }
+    
     public void randomStatus(int minLv, int minMaxHP, int minNowHP, int minPow, int LRange, int MHRange, int NHRange,
             int PRange) {
         lv = (int) (Math.random() * (LRange + 1)) + minLv;
