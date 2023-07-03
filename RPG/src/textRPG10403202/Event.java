@@ -1,4 +1,5 @@
 package textRPG10403202;
+
 public class Event {
     int probability;
     int eventType;
