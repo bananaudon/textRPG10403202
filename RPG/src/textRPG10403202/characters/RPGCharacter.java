@@ -17,7 +17,7 @@ public abstract class RPGCharacter {
 
     //UIで使用する文字列を取得
     public String getHPText(){
-        return ("HP" + this.maxHP + "/" + this.nowHP);
+        return ("HP" + this.nowHP + "/" + this.maxHP);
     }
 
     public String getPowText(){
@@ -38,4 +38,10 @@ public abstract class RPGCharacter {
 
     public abstract void heal(int heal);
 
+    public boolean isDeath(){
+        if(this.nowHP <= 0){
+            return true;
+        }
+        return false;
+    }
 }

@@ -15,4 +15,8 @@ public abstract class Enemy extends RPGCharacter{
         this.nowHP -= h;
     }
     public abstract void ACT(RPGCharacter target);
+
+    public int getEXP(){
+        return this.lv * 5;
+    }
 }

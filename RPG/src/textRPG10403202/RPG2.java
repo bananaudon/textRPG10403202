@@ -12,6 +12,8 @@ import javax.swing.JTextField;
 
 import textRPG10403202.characters.Explorer;
 import textRPG10403202.items.Heal_Low;
+import textRPG10403202.characters.enemy.Enemy;
+import textRPG10403202.characters.enemy.normalMonster;
 
 import javax.swing.JTextArea;
 import javax.swing.JButton;
@@ -47,7 +49,7 @@ public class RPG2 extends JFrame implements ActionListener {
 	private JButton Attack = new JButton("攻撃");
 	private JButton charge = new JButton("ためる");
 	private JButton itemBag = new JButton("アイテム");
-	private int[] EnemyStatus = Enemy(0);
+	private Enemy enemy;
 
 	private RPG2(String title) {
 		mainCharacter = new Explorer(1,100,100,5,this,100,1,0);
@@ -139,12 +141,13 @@ public class RPG2 extends JFrame implements ActionListener {
 		else if (e.getSource() == Attack) {
 			System.out.println("現在のゲームステータス:" + gameManager.getStatus() + "このメッセージはRPG2のactionPerformedから");
 			if (GameManager.isPossibleAttack(gameManager.getStatus())) {
-				EnemyStatus[2] -= mainCharacter.Pow;
+				mainCharacter.attack(enemy);
+				System.out.println(enemy.nowHP);
 				log.append(EnemyName + "に" + mainCharacter.Pow + "のダメージ\n");
 				nextGameState();
-				if (EnemyStatus[2] <= 0) {
+				if (enemy.isDeath()) {
 					log.append(EnemyName + "を倒した\n");
-					mainCharacter.addEXP(EnemyStatus[0] * 5);
+					mainCharacter.addEXP(enemy.getEXP());
 					gameManager.setStatus(GameState.EXPLORE);
 				}
 			} else {
@@ -159,12 +162,12 @@ public class RPG2 extends JFrame implements ActionListener {
 	}
 
 	public void battle(int EnemyTag) {
-		EnemyStatus = Enemy(EnemyTag);
+		enemy = Enemy(EnemyTag);
 		gameManager.setStatus(GameState.BATTLE);
 		logWrite(EnemyName);
 	}
 
-	public int[] Enemy(int tag) {
+	public Enemy Enemy(int tag) {
 		int LvRange = 0, PowRange = 0, HPRange = 0;
 		int addLv = 0, addPow = 0, addHP = 0;
 		double Rand = Math.random();
@@ -177,7 +180,7 @@ public class RPG2 extends JFrame implements ActionListener {
 				addLv = (int) (Rand * (LvRange + 1));
 				addPow = (int) (Rand * (PowRange + 1));
 				addHP = (int) (Rand * (HPRange + 1));
-				return new int[] { 1 + addLv, 12 + addHP, 12 + addHP, 3 + addPow };
+				return new normalMonster("スライム",1 + addLv, 12 + addHP, 12 + addHP, 3 + addPow);
 			case 1:
 				EnemyName = "ゴブリン";
 				LvRange = 4;
@@ -186,27 +189,27 @@ public class RPG2 extends JFrame implements ActionListener {
 				addLv = (int) (Rand * (LvRange + 1));
 				addPow = (int) (Rand * (PowRange + 1));
 				addHP = (int) (Rand * (HPRange + 1));
-				return new int[] { 4 + addLv, 15 + addHP, 15 + addHP, 10 + addPow };
+				return new normalMonster("ゴブリン",4 + addLv, 15 + addHP, 15 + addHP, 10 + addPow );
 			case 100:
 				EnemyName = "死";
 				addLv = (int) (Rand * (LvRange + 1));
 				addPow = (int) (Rand * (PowRange + 1));
 				addHP = (int) (Rand * (HPRange + 1));
-				return new int[] { 999 + addLv, 1000 + addHP, 1000 + addHP, 5000 + addPow };
+				return new normalMonster("死", 999, 1000, 1000, 5000);
 		}
-		return new int[] { 1, 12, 12, 3 };
+		return null;
 	}
 
 	public void Damage(int damagetype) {
 		switch (damagetype) {
 			case 0:
-				mainCharacter.damage(EnemyStatus[3]);
-				log.append(EnemyName + "から" + EnemyStatus[3] + "のダメージ\n");
+				enemy.attack(mainCharacter);
 				refresh();
 				break;
 		}
 		if (mainCharacter.nowHP <= 0) {
-			log.append("死んだ\n");
+			log.append("死んだ");
+			System.out.println("死んだ");
 			System.exit(0);
 		}
 	}
