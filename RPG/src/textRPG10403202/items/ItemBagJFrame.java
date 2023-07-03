@@ -1,10 +1,12 @@
 package textRPG10403202.items;
+
 //import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.BoxLayout;
+
 //import java.awt.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -14,14 +16,19 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ItemBagJFrame extends JFrame implements ActionListener {
+
 	private ItemBag OpenBag;
+
 	private JTextField[] itemtxt;
+
 	private JButton selectedUp = new JButton("↑");
 	private JButton selectedDown = new JButton("↓");
 	private JButton useItem = new JButton("使う");
+
 	private int selectedBagNumber = 0;
 
 	public ItemBagJFrame(ItemBag itembag) {
+		
 		OpenBag = itembag;
 		itemtxt = new JTextField[OpenBag.getItemLength()];
 
@@ -78,7 +85,7 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 		for (int i = 0; i < itemtxt.length; i++) {
 			itemtxt[i].setBackground(new Color(255, 255, 255));
 		}
-		
+
 		itemtxt[selectedBagNumber].setBackground(new Color(128, 128, 255));
 		itemtxt[selectedBagNumber].setText(OpenBag.getItemInfo(selectedBagNumber).getItemName());
 	}

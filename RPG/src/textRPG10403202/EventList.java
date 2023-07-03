@@ -1,7 +1,9 @@
 package textRPG10403202;
+
 public class EventList {
     private Event[] events = new Event[4];
     private RPG2 mainClass;
+
     EventList(RPG2 setMainClass) {
         mainClass = setMainClass;
         for (int i = 0; i < events.length; i++)
