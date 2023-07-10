@@ -1,13 +1,11 @@
 package textRPG10403202.characters.enemy;
 
+import textRPG10403202.RPG2;
 import textRPG10403202.characters.RPGCharacter;
 
 public class Enemy implements RPGCharacter{
     private String name;
-    private int lv;
-    private int maxHP;
-    private int nowHP;
-    private int Pow;
+    private int lv,maxHP,nowHP,Pow;
     public Enemy(String setEnemyName,int setLv,int setMaxHP,int setnowHP,int setPow){
         lv = setLv;
         maxHP = setMaxHP;
@@ -24,11 +22,14 @@ public class Enemy implements RPGCharacter{
     }
 
     public void attack(RPGCharacter target){
+        System.out.println("b");
+        RPG2.logWrite(this.name + "の攻撃");
         target.damage(this.Pow);
     }
 
     public void damage(int d){
         this.nowHP -= d;
+        RPG2.logWrite(this.name + "は" + d + "ダメージを受けた");
     }
 
     public void heal(int h){

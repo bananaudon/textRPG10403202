@@ -41,10 +41,11 @@ public class GameManager {
             }
             case BATTLE -> {
                 activeGameState = GameState.BATTLE_ENEMY;
-                mainClass.Damage(0);
-                activeGameState = GameState.BATTLE;
+                nextStatus();
             }
             case BATTLE_ENEMY -> {
+                mainClass.Damage(0);
+                System.out.println("GameManager");
                 activeGameState = GameState.BATTLE;
             }
             case SELECT -> {

@@ -14,7 +14,6 @@ public class Explorer implements RPGCharacter {
     private RPG2 mainClass;
     private String name;
     public Explorer(int level, int maxHP, int currentHP, int power, RPG2 setMainClass,int nL, int s, int lu){
-        //characterとして必要な情報
         lv = level;
         this.maxHP = maxHP;
         this.nowHP = currentHP;
@@ -35,7 +34,6 @@ public class Explorer implements RPGCharacter {
     //Item関連のメソッド
     public void useHealItem(){
         this.characterHave.useHealItem();
-        mainClass.nextGameState();
     }
 
     public void setHeal(int bagNumber){
@@ -74,8 +72,8 @@ public class Explorer implements RPGCharacter {
 
     @Override
     public void attack(RPGCharacter c) {
+        RPG2.logWrite(this.name + "の攻撃");
         c.damage(this.Pow);
-        RPG2.logWrite(this.name + "は拳を振り上げて" + this.Pow + "ダメージを与えた");
     }
 
     @Override

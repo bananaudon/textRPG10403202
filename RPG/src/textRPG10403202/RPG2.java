@@ -203,7 +203,7 @@ public class RPG2 extends JFrame implements ActionListener {
 			case 0:
 				enemy.attack(mainCharacter);
 				refresh();
-				break;
+			break;
 		}
 		if (mainCharacter.isDeath()) {
 			log.append("死んだ");
