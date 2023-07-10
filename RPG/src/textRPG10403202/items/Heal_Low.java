@@ -14,7 +14,7 @@ public class Heal_Low extends Heal implements Item{
         this.fixedHeal = fixedHeal;
     }
     public static void applyEffect(RPGCharacter c,Heal_Low HL) {
-        int percentageHeal = (c.maxHP / 10);
+        int percentageHeal = (c.getMaxHP() / 10);
         c.heal(HL.fixedHeal + percentageHeal);
         RPG2.logWrite((HL.fixedHeal + percentageHeal) + "回復した");
     }

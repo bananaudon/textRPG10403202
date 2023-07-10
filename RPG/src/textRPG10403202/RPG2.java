@@ -13,7 +13,6 @@ import javax.swing.JTextField;
 import textRPG10403202.characters.Explorer;
 import textRPG10403202.items.Heal_Low;
 import textRPG10403202.characters.enemy.Enemy;
-import textRPG10403202.characters.enemy.normalMonster;
 
 import javax.swing.JTextArea;
 import javax.swing.JButton;
@@ -142,8 +141,7 @@ public class RPG2 extends JFrame implements ActionListener {
 			System.out.println("現在のゲームステータス:" + gameManager.getStatus() + "このメッセージはRPG2のactionPerformedから");
 			if (GameManager.isPossibleAttack(gameManager.getStatus())) {
 				mainCharacter.attack(enemy);
-				System.out.println(enemy.nowHP);
-				log.append(EnemyName + "に" + mainCharacter.Pow + "のダメージ\n");
+				//log.append(EnemyName + "に" + mainCharacter.Pow + "のダメージ\n");
 				nextGameState();
 				if (enemy.isDeath()) {
 					log.append(EnemyName + "を倒した\n");
@@ -180,7 +178,7 @@ public class RPG2 extends JFrame implements ActionListener {
 				addLv = (int) (Rand * (LvRange + 1));
 				addPow = (int) (Rand * (PowRange + 1));
 				addHP = (int) (Rand * (HPRange + 1));
-				return new normalMonster("スライム",1 + addLv, 12 + addHP, 12 + addHP, 3 + addPow);
+				return new Enemy("スライム",1 + addLv, 12 + addHP, 12 + addHP, 3 + addPow);
 			case 1:
 				EnemyName = "ゴブリン";
 				LvRange = 4;
@@ -189,13 +187,13 @@ public class RPG2 extends JFrame implements ActionListener {
 				addLv = (int) (Rand * (LvRange + 1));
 				addPow = (int) (Rand * (PowRange + 1));
 				addHP = (int) (Rand * (HPRange + 1));
-				return new normalMonster("ゴブリン",4 + addLv, 15 + addHP, 15 + addHP, 10 + addPow );
+				return new Enemy("ゴブリン",4 + addLv, 15 + addHP, 15 + addHP, 10 + addPow );
 			case 100:
 				EnemyName = "死";
 				addLv = (int) (Rand * (LvRange + 1));
 				addPow = (int) (Rand * (PowRange + 1));
 				addHP = (int) (Rand * (HPRange + 1));
-				return new normalMonster("死", 999, 1000, 1000, 5000);
+				return new Enemy("死", 999, 1000, 1000, 5000);
 		}
 		return null;
 	}
@@ -207,16 +205,14 @@ public class RPG2 extends JFrame implements ActionListener {
 				refresh();
 				break;
 		}
-		if (mainCharacter.nowHP <= 0) {
+		if (mainCharacter.isDeath()) {
 			log.append("死んだ");
 			System.out.println("死んだ");
 			System.exit(0);
 		}
 	}
 	public void refresh() {
-		if (mainCharacter.nowHP > mainCharacter.maxHP) {
-			mainCharacter.nowHP = mainCharacter.maxHP;
-		}
+		mainCharacter.sutatusFix();
 		heal.setText("回復耐久値:" + mainCharacter.getHealItemInfo().getdurability());
 		HPtxt.setText(mainCharacter.getHPText());
 		Powtxt.setText(mainCharacter.getPowText());
