@@ -30,7 +30,7 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 
 	private int selectedBagNumber = 0;
 
-	public ItemBagJFrame(ItemBag itembag) {
+	ItemBagJFrame(ItemBag itembag) {
 		
 		OpenBag = itembag;
 		itemName = new JLabel[OpenBag.getItemLength()];
