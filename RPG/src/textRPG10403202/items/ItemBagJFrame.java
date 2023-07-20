@@ -87,6 +87,10 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 			selectedBagNumber = 0;
 		}
 
+		useItem.setEnabled(false);
+		if(OpenBag.getItemInfo(selectedBagNumber) instanceof UseableItem){
+			useItem.setEnabled(true);
+		}
 		for (int i = 0; i < itemName.length; i++) {
 			itemName[i].setBackground(new Color(255, 255, 255));
 		}
@@ -98,8 +102,7 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 	public void itemUpdata(){
 		for(int i = 0;i < itemName.length;i++){
 			itemName[i].setText(OpenBag.getItemInfo(i).getItemName());
-			itemName[i].setBackground(new Color(255, 255, 255));
 		}
-		itemName[selectedBagNumber].setBackground(new Color(128, 128, 255));
+		selectedItem();
 	}
 }
