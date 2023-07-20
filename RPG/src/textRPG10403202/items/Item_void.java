@@ -12,7 +12,6 @@ public class Item_void implements Item {
     public void setdurability(int durability){}
     public void use(RPGCharacter target){}
     public void decrementdurability() {}
-    //public void applyEffect(RPGCharacter target){}
     public boolean isBreak(){
         return false;
     };

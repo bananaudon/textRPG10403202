@@ -3,18 +3,39 @@ package textRPG10403202.items.weapon.classes;
 import textRPG10403202.characters.RPGCharacter;
 import textRPG10403202.items.weapon.WeaponCategory;
 import textRPG10403202.items.weapon.interfaces.Sword;
-public class BasicSword implements Sword{
+import textRPG10403202.items.weapon.interfaces.Spear;
+public class SpearSword implements Sword, Spear{
     WeaponCategory nowCategory;
-    public BasicSword(){
-        nowCategory = WeaponCategory.SWORD;
+    SpearSword(){
+
     }
-    public int getSwordATK(){
+    public int getSpearATK(){
         return 10;
     }
-    public int getDamage(int pow){
-        return getSwordATK();
+    public int getSwordATK(){
+        return 8;
     }
-    
+    public boolean set(WeaponCategory w){
+        if(this.getClass().isInstance(w.getTypeClass())){
+            nowCategory = w;
+            return true;
+        }
+        return false;
+    }
+    public int getDamage(int pow){
+        switch(nowCategory){
+            case SWORD -> {
+                return getSwordATK();
+            }
+            case SPEAR -> {
+                return getSpearATK();
+            }
+            default ->{
+                return 0;
+            }
+        }
+    }
+
     //Itemメソッド
     public String getItemName(){
         return "none";

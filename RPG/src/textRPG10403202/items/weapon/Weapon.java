@@ -1,5 +1,7 @@
 package textRPG10403202.items.weapon;
 
-public interface Weapon {
-    public void attack(int pow);
+import textRPG10403202.items.Item;
+
+public interface Weapon extends Item {
+    public int getDamage(int pow);
 }
