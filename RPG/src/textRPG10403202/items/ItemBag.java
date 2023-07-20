@@ -7,7 +7,7 @@ public class ItemBag {
     private Item[] items = new Item[20];
     private Item healItem = new Item_void();
     private ItemBagJFrame itemBagJFrame;
-    RPGCharacter owner;
+    private RPGCharacter owner;
     public ItemBag(RPGCharacter character){
         this.owner = character;
         this.setEmpty();
