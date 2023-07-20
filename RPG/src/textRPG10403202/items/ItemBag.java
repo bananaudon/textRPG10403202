@@ -41,9 +41,12 @@ public class ItemBag {
 
     
     public void useHealItem(){
-        healItem.use(owner);
-        if(healItem.isBreak()){
-            breakHealItem();
+        if(healItem instanceof UseableItem){
+            UseableItem i = (UseableItem)healItem;
+            i.use(owner);
+            if(i.isBreak()){
+                breakHealItem();
+            }
         }
     }
 
@@ -62,9 +65,12 @@ public class ItemBag {
     }
 
     void useItem(int bagNumber){
-        items[bagNumber].use(owner);
-        if(items[bagNumber].isBreak()){
-            breakItem(bagNumber);
+        if(items[bagNumber] instanceof UseableItem){
+            UseableItem i = (UseableItem)items[bagNumber];
+            i.use(owner);
+            if(i.isBreak()){
+                breakItem(bagNumber);
+            }
         }
     }
 

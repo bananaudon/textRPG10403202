@@ -2,7 +2,7 @@ package textRPG10403202.items;
 
 import textRPG10403202.RPG2;
 import textRPG10403202.GameManager;
-public abstract class Heal{
+public abstract class Heal implements UseableItem{
     private String itemName;
     private int durability,durabilityLossPerUse;
     private RPG2 mainClass;
