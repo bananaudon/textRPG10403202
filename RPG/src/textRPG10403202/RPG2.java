@@ -11,8 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 import textRPG10403202.characters.Explorer;
-import textRPG10403202.items.Heal_Low;
 import textRPG10403202.characters.enemy.Enemy;
+import textRPG10403202.items.classes.Heal_Low;
 
 import javax.swing.JTextArea;
 import javax.swing.JButton;

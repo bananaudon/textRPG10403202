@@ -1,9 +1,9 @@
 package textRPG10403202.characters;
 
 import textRPG10403202.RPG2;
-import textRPG10403202.items.Item;
 import textRPG10403202.items.ItemBag;
-import textRPG10403202.items.ItemInfo;
+import textRPG10403202.items.interfaces.Item;
+import textRPG10403202.items.interfaces.ItemInfo;
 
 public class Explorer implements RPGCharacter {
     private int lv,maxHP,nowHP,Pow;

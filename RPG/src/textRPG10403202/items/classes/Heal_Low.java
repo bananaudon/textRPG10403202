@@ -1,7 +1,8 @@
-package textRPG10403202.items;
+package textRPG10403202.items.classes;
 
 import textRPG10403202.RPG2;
 import textRPG10403202.characters.RPGCharacter;
+import textRPG10403202.items.interfaces.Item;
 public class Heal_Low extends Heal implements Item{
     public Heal_Low(int fixedHeal, RPG2 setMainClass) {
         this(fixedHeal,"低位ポーション",5,setMainClass);

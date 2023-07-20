@@ -6,6 +6,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
+import textRPG10403202.items.interfaces.UseableItem;
+
 //import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Dimension;

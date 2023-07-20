@@ -2,6 +2,11 @@ package textRPG10403202.items;
 
 import textRPG10403202.RPG2;
 import textRPG10403202.characters.RPGCharacter;
+import textRPG10403202.items.classes.Heal;
+import textRPG10403202.items.classes.Item_void;
+import textRPG10403202.items.interfaces.Item;
+import textRPG10403202.items.interfaces.ItemInfo;
+import textRPG10403202.items.interfaces.UseableItem;
 
 public class ItemBag {
     private Item[] items = new Item[20];

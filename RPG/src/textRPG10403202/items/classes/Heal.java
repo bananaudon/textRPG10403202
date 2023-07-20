@@ -1,8 +1,9 @@
-package textRPG10403202.items;
+package textRPG10403202.items.classes;
 
 import textRPG10403202.RPG2;
 import textRPG10403202.GameManager;
 import textRPG10403202.characters.RPGCharacter;
+import textRPG10403202.items.interfaces.UseableItem;
 public abstract class Heal implements UseableItem{
     private String itemName;
     private int durability,durabilityLossPerUse;
