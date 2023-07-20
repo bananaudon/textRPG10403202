@@ -1,11 +1,14 @@
 package textRPG10403202.items;
 
 //import javax.swing.*;
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+//import javax.swing.JTextField;
+import javax.swing.JLabel;
+import java.awt.Dimension;
 
 //import java.awt.*;
 import java.awt.BorderLayout;
@@ -19,7 +22,7 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 
 	private ItemBag OpenBag;
 
-	private JTextField[] itemtxt;
+	private JLabel[] itemName;
 
 	private JButton selectedUp = new JButton("↑");
 	private JButton selectedDown = new JButton("↓");
@@ -30,7 +33,7 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 	public ItemBagJFrame(ItemBag itembag) {
 		
 		OpenBag = itembag;
-		itemtxt = new JTextField[OpenBag.getItemLength()];
+		itemName = new JLabel[OpenBag.getItemLength()];
 
 		JPanel bwjpC = new JPanel();
 		JPanel bwjpE = new JPanel();
@@ -43,9 +46,11 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 
 		String[] itemNames = OpenBag.getItemNames();
 		for (int i = 0; i < itemNames.length; i++) {
-			itemtxt[i] = new JTextField(itemNames[i]);
-			itemtxt[i].setEditable(false);
-			bwjpC.add(itemtxt[i]);
+			itemName[i] = new JLabel(itemNames[i]);
+			itemName[i].setOpaque(true);
+			itemName[i].setHorizontalAlignment(SwingConstants.LEFT);
+			itemName[i].setMaximumSize(new Dimension(Integer.MAX_VALUE,itemName[i].getPreferredSize().height));
+			bwjpC.add(itemName[i]);
 		}
 
 		bwjpE.add(selectedUp);
@@ -77,17 +82,17 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 	public void selectedItem() {
 
 		if (selectedBagNumber < 0) {
-			selectedBagNumber = itemtxt.length - 1;
-		} else if (selectedBagNumber >= itemtxt.length) {
+			selectedBagNumber = itemName.length - 1;
+		} else if (selectedBagNumber >= itemName.length) {
 			selectedBagNumber = 0;
 		}
 
-		for (int i = 0; i < itemtxt.length; i++) {
-			itemtxt[i].setBackground(new Color(255, 255, 255));
+		for (int i = 0; i < itemName.length; i++) {
+			itemName[i].setBackground(new Color(255, 255, 255));
 		}
 
-		itemtxt[selectedBagNumber].setBackground(new Color(128, 128, 255));
-		itemtxt[selectedBagNumber].setText(OpenBag.getItemInfo(selectedBagNumber).getItemName());
+		itemName[selectedBagNumber].setBackground(new Color(128, 128, 255));
+		itemName[selectedBagNumber].setText(OpenBag.getItemInfo(selectedBagNumber).getItemName());
 	}
 
 	public void openItemBag() {
