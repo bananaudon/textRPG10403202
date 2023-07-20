@@ -2,6 +2,7 @@ package textRPG10403202.items;
 
 import textRPG10403202.RPG2;
 import textRPG10403202.GameManager;
+import textRPG10403202.characters.RPGCharacter;
 public abstract class Heal implements UseableItem{
     private String itemName;
     private int durability,durabilityLossPerUse;
@@ -14,34 +15,40 @@ public abstract class Heal implements UseableItem{
         this.mainClass = setMainClass;
     }
 
-    public String getItemName(){
-        return this.itemName;
-    }
-
+    //Item
     public void Rename(String name){
         this.itemName = name;
+    }
+
+    //ItemInfo
+    public String getItemName(){
+        return this.itemName;
     }
 
     public int getdurability(){
         return this.durability;
     }
 
+    //UseableItem
     public void decrementdurability(){
         this.durability -= durabilityLossPerUse;
     }
     
+    public boolean isBreak(){
+        if(this.durability <= 0){
+            return true;
+        }
+        return false;
+    }
+
+    public abstract void use(RPGCharacter target);
+
+    //this
     protected boolean isItemUsable(){
         return GameManager.isPossibleACT(mainClass.getActiveGameState());
     }
     
     protected void nextGameState(){
         mainClass.nextGameState();
-    }
-
-    public boolean isBreak(){
-        if(this.durability <= 0){
-            return true;
-        }
-        return false;
     }
 }
