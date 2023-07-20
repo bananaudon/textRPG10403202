@@ -95,7 +95,11 @@ public class ItemBagJFrame extends JFrame implements ActionListener {
 		itemName[selectedBagNumber].setText(OpenBag.getItemInfo(selectedBagNumber).getItemName());
 	}
 
-	public void openItemBag() {
-		setVisible(true);
+	public void itemUpdata(){
+		for(int i = 0;i < itemName.length;i++){
+			itemName[i].setText(OpenBag.getItemInfo(i).getItemName());
+			itemName[i].setBackground(new Color(255, 255, 255));
+		}
+		itemName[selectedBagNumber].setBackground(new Color(128, 128, 255));
 	}
 }

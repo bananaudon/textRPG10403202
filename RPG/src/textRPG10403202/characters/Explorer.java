@@ -3,14 +3,13 @@ package textRPG10403202.characters;
 import textRPG10403202.RPG2;
 import textRPG10403202.items.Item;
 import textRPG10403202.items.ItemBag;
-import textRPG10403202.items.ItemBagJFrame;
 import textRPG10403202.items.ItemInfo;
 
 public class Explorer implements RPGCharacter {
     private int lv,maxHP,nowHP,Pow;
     private int nextLv, EXP, steps, luck;
     private ItemBag characterHave;
-    private ItemBagJFrame characterHaveJFrame;
+    //private ItemBagJFrame characterHaveJFrame;
     private RPG2 mainClass;
     private String name;
     public Explorer(int level, int maxHP, int currentHP, int power, RPG2 setMainClass,int nL, int s, int lu){
@@ -24,8 +23,8 @@ public class Explorer implements RPGCharacter {
         this.EXP = 0;
         this.steps = s;
         this.luck = lu;
+        //this.characterHaveJFrame = new ItemBagJFrame(characterHave);
         this.characterHave = new ItemBag(this);
-        this.characterHaveJFrame = new ItemBagJFrame(characterHave);
 
         //後から決定するようにしてもいい
         name = "名無しの探索者";
@@ -46,7 +45,7 @@ public class Explorer implements RPGCharacter {
     }
 
     public void openItemBag(){
-        this.characterHaveJFrame.openItemBag();
+        this.characterHave.openItemBag();
     }
 
     public ItemInfo getHealItemInfo(){

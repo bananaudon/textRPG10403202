@@ -6,10 +6,12 @@ import textRPG10403202.characters.RPGCharacter;
 public class ItemBag {
     private Item[] items = new Item[20];
     private Item healItem = new Item_void();
+    private ItemBagJFrame itemBagJFrame;
     RPGCharacter owner;
     public ItemBag(RPGCharacter character){
         this.owner = character;
         this.setEmpty();
+        itemBagJFrame = new ItemBagJFrame(this);
     }
 
     //キャラクターが実行できるメソッド
@@ -26,6 +28,7 @@ public class ItemBag {
             if (items[i] instanceof Item_void) {
                 items[i] = Item;
                 System.out.println(i + "番に" + Item.getItemName() + "を入れたよ このコメントはitemBagクラスのaddItemメソッド");
+                itemBagJFrame.itemUpdata();
                 break;
             }
         }
@@ -35,6 +38,7 @@ public class ItemBag {
         if (items[bagNumber] instanceof Heal) {
             healItem = items[bagNumber];
             items[bagNumber] = new Item_void();
+            itemBagJFrame.itemUpdata();
         }
     }
 
@@ -54,6 +58,9 @@ public class ItemBag {
         return (ItemInfo)healItem;
     }
 
+    public void openItemBag(){
+        itemBagJFrame.setVisible(true);
+    }
     //ここまで
 
     int getItemLength(){
